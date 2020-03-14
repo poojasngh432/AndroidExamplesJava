@@ -53,7 +53,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     @Override
     public void onBindViewHolder(MovieViewHolder holder, final int position) {
         String image_url = IMAGE_URL_BASE_PATH + movies.get(position).getPosterPath();
-
         Picasso.with(context)
                 .load(image_url)
                 .placeholder(android.R.drawable.sym_def_app_icon)
