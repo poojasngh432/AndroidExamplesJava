@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent i1 = new Intent(this, VideoUploadActivityType1.class);
             startActivity(i1);
         }else if(view.getId() == R.id.btn2){
-            Intent i2 = new Intent(this, VideoUploadActivityType1.class);
+            Intent i2 = new Intent(this, VideoUploadActivityType2.class);
             startActivity(i2);
         }else if(view.getId() == R.id.btn3){
             Intent i3 = new Intent(this, VideoUploadActivityType1.class);
