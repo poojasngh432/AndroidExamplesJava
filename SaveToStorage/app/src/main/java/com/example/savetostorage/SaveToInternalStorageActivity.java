@@ -6,7 +6,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,11 +17,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class MainActivity extends AppCompatActivity {
+public class SaveToInternalStorageActivity extends AppCompatActivity {
     private ImageView imgOne;
     private Button btn;
     private OutputStream outputStream;
-    Context context = MainActivity.this;
+    Context context = SaveToInternalStorageActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

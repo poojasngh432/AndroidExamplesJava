@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SelectMultipleImagesActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/browse_imgs"
+        android:text="Browse Gallery For Images"
+        android:background="@color/blue_dark"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll1"
+        android:layout_below="@+id/browse_imgs"
+        android:layout_above="@+id/linearLayout">
+        <LinearLayout
+            android:id="@+id/lnrImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
+        <Button
+            android:id="@+id/btnAddPhots"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Add Phots"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/btnSaveImages"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
