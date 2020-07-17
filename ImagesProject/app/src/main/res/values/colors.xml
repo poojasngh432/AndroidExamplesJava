@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="lighter_blue">#C0F8FF</color>
+    <color name="light_blue">#79b9e1</color>
+    <color name="blue">#ff33b5e5</color>
+    <color name="one_channel_theme_color">#2B91E1</color>
+    <color name="one_channel_theme_color_new">#0093dd</color>
+    <color name="blue_selection">#40BBF8</color>
+    <color name="dark_sky_blue">#0094DE</color>
+    <color name="sky_blue">#277fd5</color>
+    <color name="white">#ffffff</color>
+    <color name="white_with_alpha">#8fffffff</color>
+    <color name="options_list_group_item_color">#ededed</color>
+    <color name="divider_black">#10000000</color>
+    <color name="dim_gray">#D6D7D7</color>
+    <color name="light_gray">#d0d0d0</color>
+    <color name="light_bg">#CCCCCC</color>
+    <color name="grey">#7c999b9c</color>
+    <color name="grey_list">#f5f8fc</color>
+    <color name="gray_hint">#a8a8a8</color>
+    <color name="light_grey">#b8a7a6</color>
+    <color name="dim_light_gray">#D9D9D9</color>
+    <color name="options_list_action_icon_color">#8c8c8c</color>
+    <color name="gray_d">#5e7974</color>
+    <color name="gray">#6D6D6D</color>
+    <color name="about_us_content_label_color_opacity">#8d181818</color>
+    <color name="about_us_content_label_color">#ca181818</color>
+    <color name="label_color">#e4161616</color>
+    <color name="black">#000000</color>
+    <color name="one_channel_logo_dark_color">#2b2624</color>
+    <color name="black_effective">#2a2a2a</color>
+    <color name="notification_background_color">#2d3e50</color>
+    <color name="grey_dark">#8d181818</color>
+    <color name="alice_blue">#F0F8FF</color>
+    <color name="dark_gray">#696969</color>
+    <color name="amber">#ffcc00</color>
+    <color name="orange">#FFA500</color>
+
+    <color name="dim_green">#E5FFE5</color>
+    <color name="saved_light_green_color">#667dd061</color>
+    <color name="synced_background_color_old">#c673ba58</color>
+    <color name="synced_background_color_">#0c9f4c</color>
+    <color name="dark_green">#2E7D32</color>
+    <color name="light_green">#5DB69B</color>
+    <color name="light_red">#FA7D7D</color>
+    <color name="green">#009C8A</color>
+    <color name="green_d">#58857e</color>
+    <color name="dim_red">#F7ECEC</color>
+
+    <color name="unsynced_background_color_">#FF0000</color>
+    <color name="red">#f00a08</color>
+    <color name="bright_red">#FF0000</color>
+    <color name="light_orange">#ffecb3</color>
+    <color name="text_color">#222222</color>
+
+    //Camera
+    <color name="green_dark">#27ae60</color>
+    <color name="red_dark">#c0392b</color>
+    <color name="red_light">#FFCDD2</color>
+    <color name="blue_dark">#2980b9</color>
+    <color name="camera_toolbar_color">#43000000</color>
+
+    <color name="greish">#CFD4EB</color>
+    <color name="bluish">#E9EADB</color>
+    <color name="dark_bulish">#33539E</color>
+    <color name="sky_bulish">#128CDE</color>
+    <color name="dark_greish">#555555</color>
+
+    <color name="summer">#44eebd82</color>
+    <color name="fall">#44d8d27e</color>
+    <color name="winter">#44a1c1da</color>
+    <color name="spring">#448da64b</color>
+    <color name="grey_disabled">#e5e5e5</color>
+
+    <color name="loader_defalut">#44ffffff</color>
+    <color name="loader_selected">#ffffff</color>
+    <color name="start_marker">#40BBF8</color>
+    <color name="end_marker">#6FE25D</color>
+
+    <color name="colorBackground">#413e4f</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextHint">#51d8c7</color>
+
+    <!-- FloatingToolbar -->
+    <color name="floating_popup_divider_dark">#2F2F2F</color>
+    <color name="floating_popup_divider_light">#E9E9E9</color>
+
+    <!-- Status bar color for semi transparent mode. -->
+    <color name="system_bar_background_semi_transparent">#66000000</color> <!-- 40% black -->
+    <color name="resize_shadow_start_color">#2a000000</color>
+    <color name="resize_shadow_end_color">#00000000</color>
+    <color name="tooltip_background_dark">#e6616161</color>
+    <color name="tooltip_background_light">#e6FFFFFF</color>
+
+    <!-- Default profile badge colors -->
+    <color name="profile_badge_1">#ff1A73E8</color><!-- Blue -->
+    <color name="profile_badge_2">#ffff6d00</color><!-- Orange -->
+    <color name="profile_badge_3">#ff22f033</color><!-- Green -->
+
+    <!-- Default instant app badge color -->
+    <color name="instant_app_badge">#ff757575</color><!-- Grey -->
+
+    <color name="primary">#2d2d2d</color>
+    <color name="secondary">#FF4081</color>
+    <color name="accent">#33b5e5</color>
+    <color name="divider">#CCC</color>
+    <color name="icons">#FFF</color>
+    <color name="item_background">#FFF</color>
+
+    <!-- For date picker widget -->
+    <drawable name="selected_day_background">#ff0092f4</drawable>
+
+    <drawable name="screen_background_light">#ffffffff</drawable>
+    <drawable name="screen_background_dark">#ff000000</drawable>
+    <drawable name="status_bar_closed_default_background">#ff000000</drawable>
+    <drawable name="status_bar_opened_default_background">#ff000000</drawable>
+    <drawable name="search_bar_default_color">#ff000000</drawable>
+    <drawable name="safe_mode_background">#60000000</drawable>
+
+    <!-- Background drawable that can be used for a transparent activity to
+         be able to display a dark UI: this darkens its background to make
+         a dark (default theme) UI more visible. -->
+    <drawable name="screen_background_dark_transparent">#80000000</drawable>
+
+    <!-- Background drawable that can be used for a transparent activity to
+         be able to display a light UI: this lightens its background to make
+         a light UI more visible. -->
+    <drawable name="screen_background_light_transparent">#80ffffff</drawable>
+</resources>
