@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_1"
+                android:text="Activity Lifecycle "
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_2"
+                android:text="Error Messages"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_3"
+                android:text="Views"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_4"
+                android:text="Action Bar"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_5"
+                android:text="Media"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_6"
+                android:text="Animations"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_7"
+                android:text="Data Lists"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_8"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/touch_listeners_btn"
+                android:text="Touch Listeners"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/freeze_layout_on_top_btn"
+                android:text="Freeze layout"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrolling_btn"
+                android:text="Scrolling"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/permissions_btn"
+                android:text="Permissions"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/send_email_btn"
+                android:text="Send Email"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_view_btn"
+                android:text="Recycler View"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something46"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something45"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something44"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something43"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something42"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something41"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something31"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something3"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something4"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something5"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something6"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_something7"
+                android:text="Add more.."
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/rounded_cornered_background"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

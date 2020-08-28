@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="lighter_blue">#C0F8FF</color>
+    <color name="light_blue">#79b9e1</color>
+    <color name="blue">#ff33b5e5</color>
+    <color name="one_channel_theme_color">#2B91E1</color>
+    <color name="one_channel_theme_color_new">#0093dd</color>
+    <color name="blue_selection">#40BBF8</color>
+    <color name="dark_sky_blue">#0094DE</color>
+    <color name="sky_blue">#277fd5</color>
+    <color name="white">#ffffff</color>
+    <color name="white_with_alpha">#8fffffff</color>
+    <color name="options_list_group_item_color">#ededed</color>
+    <color name="divider_black">#10000000</color>
+    <color name="dim_gray">#D6D7D7</color>
+    <color name="light_gray">#d0d0d0</color>
+    <color name="light_bg">#CCCCCC</color>
+    <color name="grey">#7c999b9c</color>
+    <color name="grey_list">#f5f8fc</color>
+    <color name="gray_hint">#a8a8a8</color>
+    <color name="light_grey">#b8a7a6</color>
+    <color name="dim_light_gray">#D9D9D9</color>
+    <color name="options_list_action_icon_color">#8c8c8c</color>
+    <color name="gray_d">#5e7974</color>
+    <color name="gray">#6D6D6D</color>
+    <color name="about_us_content_label_color_opacity">#8d181818</color>
+    <color name="about_us_content_label_color">#ca181818</color>
+    <color name="label_color">#e4161616</color>
+    <color name="black">#000000</color>
+    <color name="one_channel_logo_dark_color">#2b2624</color>
+    <color name="black_effective">#2a2a2a</color>
+    <color name="notification_background_color">#2d3e50</color>
+    <color name="grey_dark">#8d181818</color>
+    <color name="alice_blue">#F0F8FF</color>
+    <color name="dark_gray">#696969</color>
+    <color name="amber">#ffcc00</color>
+    <color name="orange">#FFA500</color>
+
+    <color name="dark_green">#2E7D32</color>
+    <color name="light_green">#5DB69B</color>
+    <color name="green">#009C8A</color>
+    <color name="green_d">#58857e</color>
+
+    <color name="unsynced_background_color_">#FF0000</color>
+    <color name="red">#f00a08</color>
+    <color name="bright_red">#FF0000</color>
+    <color name="light_orange">#ffecb3</color>
+    <color name="text_color">#222222</color>
+
+    <color name="red_dark">#c0392b</color>
+    <color name="red_light">#FFCDD2</color>
+    <color name="blue_dark">#2980b9</color>
+    <color name="camera_toolbar_color">#43000000</color>
+
+    <color name="greish">#CFD4EB</color>
+    <color name="bluish">#E9EADB</color>
+    <color name="dark_bulish">#33539E</color>
+    <color name="sky_bulish">#128CDE</color>
+    <color name="dark_greish">#555555</color>
+
+    <color name="summer">#44eebd82</color>
+    <color name="fall">#44d8d27e</color>
+    <color name="winter">#44a1c1da</color>
+    <color name="spring">#448da64b</color>
+    <color name="grey_disabled">#e5e5e5</color>
+
+    <color name="loader_defalut">#44ffffff</color>
+    <color name="loader_selected">#ffffff</color>
+    <color name="start_marker">#40BBF8</color>
+
+    <color name="colorBackground">#413e4f</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextHint">#51d8c7</color>
+
+    <!-- FloatingToolbar -->
+    <color name="floating_popup_divider_dark">#2F2F2F</color>
+    <color name="floating_popup_divider_light">#E9E9E9</color>
+
+    <!-- Status bar color for semi transparent mode. -->
+    <color name="system_bar_background_semi_transparent">#66000000</color> <!-- 40% black -->
+    <color name="resize_shadow_start_color">#2a000000</color>
+    <color name="resize_shadow_end_color">#00000000</color>
+    <color name="tooltip_background_dark">#e6616161</color>
+    <color name="tooltip_background_light">#e6FFFFFF</color>
+
+    <!-- Default instant app badge color -->
+    <color name="instant_app_badge">#ff757575</color><!-- Grey -->
+
+    <color name="primary">#2d2d2d</color>
+    <color name="secondary">#FF4081</color>
+    <color name="accent">#33b5e5</color>
+    <color name="divider">#CCC</color>
+    <color name="icons">#FFF</color>
+    <color name="item_background">#FFF</color>
+
+    <!-- Shades of Green -->
+    <color name="lawngreen">#7CFC00</color>
+    <color name="limegreen">#32CD32</color>
+    <color name="green_mist">#BCED91</color>
+    <color name="guacamole_green">#A6D785</color>
+    <color name="soap_green">#8CDD81</color>
+    <color name="dark_green_lighter2">#548B54</color>
+    <color name="dark_green_lighter">#458B00</color>
+    <color name="green_apple">#629632</color>
+    <color name="forest_green">#228B22</color>
+    <color name="grass_green">#008000</color>
+    <color name="darkgreen">#006400</color>
+    <color name="green_yellow">#ADFF2F</color>
+    <color name="spring_green">#00FF7F</color>
+    <color name="medium_spring_green">#00FA9A	</color>
+    <color name="lightgreen">#90EE90</color>
+    <color name="pale_green">#98FB98</color>
+    <color name="dark_sea_green">#8FBC8F</color>
+    <color name="medium_sea_green">#3CB371</color>
+    <color name="light_sea_green">#20B2AA</color>
+    <color name="sea_green">#2E8B57	</color>
+    <color name="olive">#808000</color>
+    <color name="dark_olive_green">#556B2F</color>
+    <color name="tea_leaves_green">#5F755E</color>
+    <color name="olive_drab">#6B8E23</color>
+
+    <!-- Shades of Red -->
+    <color name="salmon_red">#FA8072</color>
+    <color name="indian_red">#CD5C5C</color>
+    <color name="firebrick_red">#B22222</color>
+    <color name="orange_red">#FF4500</color>
+    <color name="paleviolet_red">#DB7093</color>
+    <color name="maroon_red">#800000</color>
+    <color name="dark_red">#8B0000</color>
+    <color name="crimson_red">#DC143C</color>
+    <color name="burgundy_red">#8D021F</color>
+    <color name="persian_red">#CA3433</color>
+    <color name="us_flag_red">#BF0A30</color>
+    <color name="raspberry_red">#D21F3C</color>
+    <color name="hibiscus_red">#B43757</color>
+    <color name="candy_apple_red">#FF0800</color>
+    <color name="vermillion_red">#7E191B</color>
+    <color name="desire_red">#EA3C53</color>
+    <color name="ruby_red">#E0115F</color>
+    <color name="chilli_red">#C21807</color>
+    <color name="imperial_red">#ED2939</color>
+    <color name="scarlett_red">#FF2400</color>
+    <color name="tomato_red">#e75850</color>
+
+</resources>
