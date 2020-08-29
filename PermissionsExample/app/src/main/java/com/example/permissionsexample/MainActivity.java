@@ -1,5 +1,6 @@
 package com.example.permissionsexample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -12,8 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
-    private Button btnLoadContacts;
+public class MainActivity extends BaseActivity {
+
     private int MY_PERMISSION_REQUEST_READ_CONTACTS = 20;
     private int MY_PERMISSION_REQUEST_WRITE_CONTACTS = 30;
 
@@ -28,6 +29,39 @@ public class MainActivity extends AppCompatActivity {
                 loadContacts();
             }
         });
+
+        findViewById(R.id.btn_check).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if((checkWhetherAllPermissionsPresentForPhotoTagging())){
+                    Toast.makeText(MainActivity.this, R.string.permissions_granted, Toast.LENGTH_SHORT).show();
+                }else{
+                    requestRunTimePermissions(MainActivity.this, permissionsNeededForPhotoTagging, MY_PHOTO_TAGGING_PERMISSIONS);
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode == MY_PHOTO_TAGGING_PERMISSIONS){
+            if(checkWhetherAllPermissionsPresentForPhotoTagging()){
+                Toast.makeText(this, R.string.permissions_granted, Toast.LENGTH_SHORT).show();
+            }else{
+                String permissionString = getDeniedPermissionsAmongPhototaggingPermissions().length==1?"Permission":"Permissions";
+                Snackbar.make(findViewById(android.R.id.content),permissionString + " denied, photo tagging will not work. To enable now click here", Snackbar.LENGTH_INDEFINITE).setAction("ENABLE",
+                        new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v){
+                                ActivityCompat.requestPermissions(MainActivity.this, getDeniedPermissionsAmongPhototaggingPermissions(), MY_PHOTO_TAGGING_PERMISSIONS);
+                            }
+                        }).show();
+            }
+        }
     }
 
     private void loadContacts() {
