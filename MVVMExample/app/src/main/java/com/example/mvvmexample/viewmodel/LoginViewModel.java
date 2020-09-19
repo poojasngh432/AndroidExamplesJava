@@ -23,7 +23,6 @@ public class LoginViewModel extends BaseObservable {
         return toastMessage;
     }
 
-
     private void setToastMessage(String toastMessage) {
 
         this.toastMessage = toastMessage;
