@@ -1,6 +1,6 @@
 package com.example.tutorialsproject.util;
 
-import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -8,129 +8,79 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.ProgressDialog;
-import android.content.ComponentName;
-import android.content.ContentValues;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
-import android.text.style.StyleSpan;
-import android.util.Base64;
+import android.text.format.Formatter;
 import android.util.Log;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
+import android.util.Patterns;
+import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.app.NotificationCompat;
-
 import com.example.tutorialsproject.R;
-import com.example.tutorialsproject.activity.IntentsActivity;
 import com.example.tutorialsproject.activity.SecondActivity;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Random;
-import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static android.content.Context.NOTIFICATION_SERVICE;
-
 public class Utils {
-    private static String EMAIL_EXPRESSION = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
     private static final String TAG = Utils.class.getSimpleName();
+    private static String EMAIL_EXPRESSION = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+    private static   final Pattern IP_ADDRESS
+            = Pattern.compile(
+            "((25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\\.(25[0-5]|2[0-4]"
+                    + "[0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]"
+                    + "[0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}"
+                    + "|[1-9][0-9]|[0-9]))");
 
-    static ProgressDialog mProgressDialog;
 
-    public static ColorDrawable[] vibrantLightColorList =
-            {
-                    new ColorDrawable(Color.parseColor("#ffeead")),
-                    new ColorDrawable(Color.parseColor("#93cfb3")),
-                    new ColorDrawable(Color.parseColor("#fd7a7a")),
-                    new ColorDrawable(Color.parseColor("#faca5f")),
-                    new ColorDrawable(Color.parseColor("#1ba798")),
-                    new ColorDrawable(Color.parseColor("#6aa9ae")),
-                    new ColorDrawable(Color.parseColor("#ffbf27")),
-                    new ColorDrawable(Color.parseColor("#d93947"))
-            };
-
-    public static ColorDrawable getRandomDrawableColor() {
-        int idx = new Random().nextInt(vibrantLightColorList.length);
-        return vibrantLightColorList[idx];
+    public static void log(String TAG , String message) {
+        Log.d(TAG, message);
     }
 
-    public static int getRandomColor() {
-        Random rnd = new Random();
-        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-    }
+    public static String getWifiIpAddress(Context context) {
+        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
+        int ip = wifiInfo.getIpAddress();
 
-    public static String getRandomString(List<String> list) {
-        Random rand = new Random();
-        return list.get(rand.nextInt(list.size()));
+        return Formatter.formatIpAddress(ip);
     }
 
     public static boolean isNetworkAvailable(Context context) {
@@ -139,6 +89,67 @@ public class Utils {
         return networkInfo != null && networkInfo.isConnected();
     }
 
+    public static boolean isValidIP(String ip ){
+        boolean validate = false ;
+        Matcher matcher = IP_ADDRESS.matcher(ip);
+        if (matcher.matches()) {
+            return true ;
+        }
+        return validate  ;
+    }
+
+    public static void showMessageDialog(Context context, String title, String message, int imageId) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setMessage(message)
+                .setCancelable(false)
+                .setIcon(imageId)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static boolean isGPSEnable(Context context){
+
+        final LocationManager manager = (LocationManager)context.getSystemService( Context.LOCATION_SERVICE );
+
+        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            return false ;
+        }
+        return  true ;
+    }
+
+
+    public static void showGPSEnableDialog(final Context context){
+        showGPSEnableDialog(context,"Your GPS seems to be disabled, do you want to enable it?","Yes","No");
+    }
+
+    public static  void showGPSEnableDialog(final Context context , String message , String positiveButtonText, String negativeButtonText){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(positiveButtonText, new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        context.startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton(negativeButtonText, new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     public static void sendNotification(Context context) {
 
@@ -219,6 +230,34 @@ public class Utils {
         return false;
     }
 
+    @SuppressLint("MissingPermission")
+    public static String getDeviceIMEI(Context context){
+        String imei="";
+        try{
+            TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+
+            if (android.os.Build.VERSION.SDK_INT >= 26) {
+                imei=telephonyManager.getImei();
+            }
+            else
+            {
+                imei=telephonyManager.getDeviceId();
+            }
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return imei ;
+    }
+
+    /**
+     * Disable screenshot functionality.
+     */
+    public static void disableScreenshotFunctionality(Activity activity) {
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+    }
+
     /**
      * Shows an alert dialog with the OK button. When the user presses OK button, the dialog
      * dismisses.
@@ -257,91 +296,6 @@ public class Utils {
         }
 
         builder.show();
-    }
-
-    /**
-     * Serializes the Bitmap to Base64
-     **/
-    public static String toBase64(Bitmap bitmap) {
-
-        if (bitmap == null) {
-            throw new NullPointerException("Bitmap cannot be null");
-        }
-
-        String base64Bitmap = null;
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] imageBitmap = stream.toByteArray();
-        base64Bitmap = Base64.encodeToString(imageBitmap, Base64.DEFAULT);
-
-        return base64Bitmap;
-    }
-
-    /**
-     * Converts the passed in drawable to Bitmap representation
-     **/
-    public static Bitmap drawableToBitmap(Drawable drawable) {
-
-        if (drawable == null) {
-            throw new NullPointerException("Drawable to convert should NOT be null");
-        }
-
-        if (drawable instanceof BitmapDrawable) {
-            return ((BitmapDrawable) drawable).getBitmap();
-        }
-
-        if (drawable.getIntrinsicWidth() <= 0 && drawable.getIntrinsicHeight() <= 0) {
-            return null;
-        }
-
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-        drawable.draw(canvas);
-
-        return bitmap;
-    }
-
-    /**
-     * Shows a progress dialog with a spinning animation in it. This method must preferably called
-     * from a UI thread.
-     **/
-    public static void showProgressDialog(Context ctx, String title, String body, boolean isCancellable) {
-        showProgressDialog(ctx, title, body, null, isCancellable);
-    }
-
-    /**
-     * Shows a progress dialog with a spinning animation in it. This method must preferably called
-     * from a UI thread.
-     **/
-    public static void showProgressDialog(Context ctx, String title, String body, Drawable icon, boolean isCancellable) {
-
-        if (ctx instanceof Activity) {
-            if (!((Activity) ctx).isFinishing()) {
-                mProgressDialog = ProgressDialog.show(ctx, title, body, true);
-                mProgressDialog.setIcon(icon);
-                mProgressDialog.setCancelable(isCancellable);
-            }
-        }
-    }
-
-    /**
-     * Check if the {@link android.app.ProgressDialog} is visible in the UI.
-     **/
-    public static boolean isProgressDialogVisible() {
-        return (mProgressDialog != null);
-    }
-
-    /**
-     * Dismiss the progress dialog if it is visible.
-     **/
-    public static void dismissProgressDialog() {
-
-        if (mProgressDialog != null) {
-            mProgressDialog.dismiss();
-        }
-
-        mProgressDialog = null;
     }
 
     /**
@@ -477,6 +431,28 @@ public class Utils {
         return false;
     }
 
+    public static Bitmap getBitmapFromFile(String path) {
+        File imageFile = new File(path);
+        Bitmap bitmap = null;
+        if (imageFile.exists()) {
+            bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+        }
+
+        return bitmap;
+    }
+
+    public static Bitmap getBitmapFromURI(Uri uri, Context context) {
+        Bitmap bitmap = null;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return bitmap;
+    }
+
     /**
      * Shares an application over the social network like Facebook, Twitter etc.
      *
@@ -517,33 +493,6 @@ public class Utils {
             return -1;
     }
 
-
-    @Nullable
-    /**
-     * Capitalizes each word in the string.
-     */
-    public static String capitalizeString(String string) {
-
-        if (string == null) {
-            return null;
-        }
-
-        char[] chars = string.toLowerCase().toCharArray();
-        boolean found = false;
-        for (int i = 0; i < chars.length; i++) {
-            if (!found && Character.isLetter(chars[i])) {
-                chars[i] = Character.toUpperCase(chars[i]);
-                found = true;
-            } else if (Character.isWhitespace(chars[i]) || chars[i] == '.' || chars[i] == '\'') { // You
-                // can add other
-                // chars here
-                found = false;
-            }
-        } // end for
-
-        return String.valueOf(chars);
-    }
-
     /**
      * Checks if the DB with the given name is present on the device.
      */
@@ -564,34 +513,6 @@ public class Utils {
         return (sqLiteDatabase != null);
     }
 
-    /**
-     * Get the file path from the Media Content Uri for video, audio or images.
-     **/
-    public static String getPathForMediaUri(Context context, Uri mediaContentUri) {
-
-        Cursor cur = null;
-        String path = null;
-
-        try {
-            String[] projection = {MediaStore.MediaColumns.DATA};
-            cur = context.getContentResolver().query(mediaContentUri, projection, null, null, null);
-
-            if (cur != null && cur.getCount() != 0) {
-                cur.moveToFirst();
-                path = cur.getString(cur.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA));
-            }
-
-            // Log.v( TAG, "#getRealPathFromURI Path: " + path );
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cur != null && !cur.isClosed())
-                cur.close();
-        }
-
-        return path;
-    }
-
     public static ArrayList<String> toStringArray(JSONArray jsonArr) {
 
         if (jsonArr == null || jsonArr.length() == 0) {
@@ -610,7 +531,6 @@ public class Utils {
                 e.printStackTrace();
             }
         }
-
         return stringArray;
     }
 
@@ -675,54 +595,6 @@ public class Utils {
     }
 
     /**
-     * @return Path of the image file that has been written.
-     * @deprecated Use {@link MediaUtils#writeImage(Context, byte[])}
-     * Writes the given image to the external storage of the device. If external storage is not
-     * available, the image is written to the application private directory
-     **/
-    public static String writeImage(Context ctx, byte[] imageData) {
-
-        final String FILE_NAME = "photograph.jpeg";
-        File dir = null;
-        String filePath = null;
-        OutputStream imageFileOS;
-
-        dir = getStorageDirectory(ctx, null);
-        File f = new File(dir, FILE_NAME);
-
-        try {
-            imageFileOS = new FileOutputStream(f);
-            imageFileOS.write(imageData);
-            imageFileOS.flush();
-            imageFileOS.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        filePath = f.getAbsolutePath();
-
-        return filePath;
-    }
-
-    /**
-     * Inserts an image into {@link android.provider.MediaStore.Images.Media} content provider of the device.
-     *
-     * @return The media content Uri to the newly created image, or null if the image failed to be
-     * stored for any reason.
-     **/
-    public static String writeImageToMedia(Context ctx, Bitmap image, String title, String description) {
-        if (ctx == null) {
-            throw new NullPointerException("Context cannot be null");
-        }
-
-        return MediaStore.Images.Media.insertImage(ctx.getContentResolver(), image, title, description);
-    }
-
-    /**
      * Gets the name of the application that has been defined in AndroidManifest.xml
      *
      * @throws android.content.pm.PackageManager.NameNotFoundException
@@ -763,45 +635,6 @@ public class Utils {
         }
 
         return null;
-    }
-
-    /**
-     * Transforms Calendar to ISO 8601 string.
-     **/
-    public static String fromCalendar(final Calendar calendar) {
-        Date date = calendar.getTime();
-        String formatted = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(date);
-        return formatted.substring(0, 22) + ":" + formatted.substring(22);
-    }
-
-    /**
-     * Gets current date and time formatted as ISO 8601 string.
-     **/
-    public static String now() {
-        return fromCalendar(GregorianCalendar.getInstance());
-    }
-
-    /**
-     * Transforms ISO 8601 string to Calendar.
-     **/
-    public static Calendar toCalendar(final String iso8601string) throws ParseException {
-        Calendar calendar = GregorianCalendar.getInstance();
-        String s = iso8601string.replace("Z", "+00:00");
-        try {
-            s = s.substring(0, 22) + s.substring(23);
-        } catch (IndexOutOfBoundsException e) {
-            // throw new org.apache.http.ParseException();
-            e.printStackTrace();
-        }
-
-        Date date = null;
-        try {
-            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").parse(s);
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
-        calendar.setTime(date);
-        return calendar;
     }
 
     /**
@@ -857,138 +690,6 @@ public class Utils {
     }
 
     /**
-     * Gets the name of the day of the week.
-     **/
-    public static String getDayOfWeek(String date) {
-        Date dateDT = DateUtilsClass.parseDate(date);
-
-        if (dateDT == null) {
-            return null;
-        }
-
-        // Get current date
-        Calendar c = Calendar.getInstance();
-        // it is very important to
-        // set the date of
-        // the calendar.
-        c.setTime(dateDT);
-        int day = c.get(Calendar.DAY_OF_WEEK);
-
-        String dayStr = null;
-
-        switch (day) {
-
-            case Calendar.SUNDAY:
-                dayStr = "Sunday";
-                break;
-
-            case Calendar.MONDAY:
-                dayStr = "Monday";
-                break;
-
-            case Calendar.TUESDAY:
-                dayStr = "Tuesday";
-                break;
-
-            case Calendar.WEDNESDAY:
-                dayStr = "Wednesday";
-                break;
-
-            case Calendar.THURSDAY:
-                dayStr = "Thursday";
-                break;
-
-            case Calendar.FRIDAY:
-                dayStr = "Friday";
-                break;
-
-            case Calendar.SATURDAY:
-                dayStr = "Saturday";
-                break;
-        }
-
-        return dayStr;
-    }
-
-    /**
-     * Converts a given bitmap to byte array
-     */
-    public static byte[] toBytes(Bitmap bmp) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        return stream.toByteArray();
-    }
-
-    /**
-     * Resizes an image to the given width and height parameters Prefer using
-     *
-     * @param sourceBitmap Bitmap to be resized
-     * @param newWidth     Width of resized bitmap
-     * @param newHeight    Height of the resized bitmap
-     */
-    public static Bitmap resizeImage(Bitmap sourceBitmap, int newWidth, int newHeight, boolean filter) {
-        if (sourceBitmap == null) {
-            throw new NullPointerException("Bitmap to be resized cannot be null");
-        }
-
-        Bitmap resized = null;
-
-        if (sourceBitmap.getWidth() < sourceBitmap.getHeight()) {
-            // image is portrait
-            resized = Bitmap.createScaledBitmap(sourceBitmap, newHeight, newWidth, true);
-        } else {
-            // image is landscape
-            resized = Bitmap.createScaledBitmap(sourceBitmap, newWidth, newHeight, true);
-        }
-
-        resized = Bitmap.createScaledBitmap(sourceBitmap, newWidth, newHeight, true);
-
-        return resized;
-    }
-
-    /**
-     * @param compressionFactor Powers of 2 are often faster/easier for the decoder to honor
-     */
-    public static Bitmap compressImage(Bitmap sourceBitmap, int compressionFactor) {
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        opts.inSampleSize = compressionFactor;
-
-        if (Build.VERSION.SDK_INT >= 10) {
-            opts.inPreferQualityOverSpeed = true;
-        }
-
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-
-        Bitmap image = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length, opts);
-
-        return image;
-    }
-
-    /**
-     * Provide the height to which the sourceImage is to be resized. This method will calculate the
-     * resultant height. Use scaleDownBitmap from {@link Utils} wherever possible
-     */
-    public Bitmap resizeImageByHeight(int height, Bitmap sourceImage) {
-        int widthO = 0; // original width
-        int heightO = 0; // original height
-        int widthNew = 0;
-        int heightNew = 0;
-
-        widthO = sourceImage.getWidth();
-        heightO = sourceImage.getHeight();
-        heightNew = height;
-
-        // Maintain the aspect ratio
-        // of the original banner image.
-        widthNew = (heightNew * widthO) / heightO;
-
-        return Bitmap.createScaledBitmap(sourceImage, widthNew, heightNew, true);
-    }
-
-    /**
      * Checks if the url is valid
      */
     public static boolean isValidURL(String url) {
@@ -1009,246 +710,8 @@ public class Utils {
         return true;
     }
 
-    @Nullable
-    /**
-     * @return Lower case string for one of above listed media type
-     * @deprecated Use {@link MediaUtils#getMediaType(Uri)}
-     * Get the type of the media. Audio, Video or Image.
-     */
-    public static String getMediaType(String contentType) {
-        if (isMedia(contentType)) {
-            if (isVideo(contentType)) {
-                return "video";
-            } else if (isAudio(contentType)) {
-                return "audio";
-            } else if (isImage(contentType)) {
-                return "image";
-            } else {
-                return null;
-            }
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * @param mimeType standard MIME type of the data.
-     * @deprecated {@link MediaUtils#isMedia(String)}
-     * Identifies if the content represented by the parameter mimeType is media. Image, Audio and
-     * Video is treated as media by this method. You can refer to standard MIME type here. <a
-     * href="http://www.iana.org/assignments/media-types/media-types.xhtml" >Standard MIME
-     * types.</a>
-     */
-    public static boolean isMedia(String mimeType) {
-        boolean isMedia = false;
-
-        if (mimeType != null) {
-            if (mimeType.startsWith("image/") || mimeType.startsWith("video/") || mimeType.startsWith("audio/")) {
-                isMedia = true;
-            }
-        } else {
-            isMedia = false;
-        }
-
-        return isMedia;
-    }
-
-    /**
-     * @deprecated Use {@link MediaUtils#isImage(String)}
-     * Returns true if the mime type is a standard image mime type
-     */
-    public static boolean isImage(String mimeType) {
-        if (mimeType != null) {
-            if (mimeType.startsWith("image/")) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * @deprecated Use {@link MediaUtils#isAudio(String)}
-     * Returns true if the mime type is a standard audio mime type
-     */
-    public static boolean isAudio(String mimeType) {
-        if (mimeType != null) {
-            if (mimeType.startsWith("audio/")) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * @deprecated Use {@link MediaUtils#isVideo(String)}
-     * Returns true if the mime type is a standard video mime type
-     */
-    public static boolean isVideo(String mimeType) {
-        if (mimeType != null) {
-            if (mimeType.startsWith("video/")) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * @param mediaUri uri to the media resource. For e.g. content://media/external/images/media/45490 or
-     *                 content://media/external/video/media/45490
-     * @return Size in bytes
-     * @deprecated Use {@link MediaUtils#getMediaSize(Context, Uri)}
-     * Gets the size of the media resource pointed to by the paramter mediaUri.
-     * <p/>
-     * Known bug: for unknown reason, the image size for some images was found to be 0
-     **/
-    public static long getMediaSize(Context context, Uri mediaUri) {
-        Cursor cur = context.getContentResolver().query(mediaUri, new String[]{MediaStore.Images.Media.SIZE}, null, null, null);
-        long size = -1;
-
-        try {
-            if (cur != null && cur.getCount() > 0) {
-                while (cur.moveToNext()) {
-                    size = cur.getLong(cur.getColumnIndex(MediaStore.Images.Media.SIZE));
-
-                    // for unknown reason, the image size for image was found to
-                    // be 0
-                    // Log.v( TAG, "#getSize byte.size: " + size );
-
-                    if (size == 0)
-                        Log.w(TAG, "#getSize The media size was found to be 0. Reason: UNKNOWN");
-
-                } // end while
-            } else if (cur.getCount() == 0) {
-                Log.e(TAG, "#getMediaSize cur size is 0. File may not exist");
-            } else {
-                Log.e(TAG, "#getMediaSize cur is null");
-            }
-        } finally {
-            if (cur != null && !cur.isClosed()) {
-                cur.close();
-            }
-        }
-
-        return size;
-    }
-
-    /**
-     * @deprecated {@link MediaUtils#getMediaFileName(Context, Uri)}
-     * Gets media file name.
-     **/
-    public static String getMediaFileName(Context ctx, Uri mediaUri) {
-        String colName = MediaStore.MediaColumns.DISPLAY_NAME;
-        Cursor cur = ctx.getContentResolver().query(mediaUri, new String[]{colName}, null, null, null);
-        String dispName = null;
-
-        try {
-            if (cur != null && cur.getCount() > 0) {
-                while (cur.moveToNext()) {
-                    dispName = cur.getString(cur.getColumnIndex(colName));
-
-                    // for unknown reason, the image size for image was found to
-                    // be 0
-                    // Log.v( TAG, "#getMediaFileName byte.size: " + size );
-
-                    if (TextUtils.isEmpty(colName)) {
-                        Log.w(TAG, "#getMediaFileName The file name is blank or null. Reason: UNKNOWN");
-                    }
-
-                } // end while
-            } else if (cur != null && cur.getCount() == 0) {
-                Log.e(TAG, "#getMediaFileName File may not exist");
-            } else {
-                Log.e(TAG, "#getMediaFileName cur is null");
-            }
-        } finally {
-            if (cur != null && !cur.isClosed()) {
-                cur.close();
-            }
-        }
-
-        return dispName;
-    }
-
-    @Nullable
-    /**
-     * @deprecated Use {@link MediaUtils#getMediaType(Uri)}
-     * Gets media type from the Uri.
-     */
-    public static String getMediaType(Uri uri) {
-        if (uri == null) {
-            return null;
-        }
-
-        String uriStr = uri.toString();
-
-        if (uriStr.contains("video")) {
-            return "video";
-        } else if (uriStr.contains("audio")) {
-            return "audio";
-        } else if (uriStr.contains("image")) {
-            return "image";
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * @param sourceText String to be converted to bold.
-     * @deprecated Use {@link #toBold(String, String)}
-     * Returns {@link android.text.SpannableString} in Bold typeface
-     */
-    public static SpannableStringBuilder toBold(String sourceText) {
-
-        if (sourceText == null) {
-            throw new NullPointerException("String to convert cannot be bold");
-        }
-
-        final SpannableStringBuilder sb = new SpannableStringBuilder(sourceText);
-
-        // Span to set text color to some RGB value
-        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
-
-        // set text bold
-        sb.setSpan(bss, 0, sb.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        return sb;
-    }
-
-    /**
-     * Typefaces the string as bold.
-     * If sub-string is null, entire string will be typefaced as bold and returned.
-     *
-     * @param string
-     * @param subString The subString within the string to bold. Pass null to bold entire string.
-     * @return {@link android.text.SpannableString}
-     */
-    public static SpannableStringBuilder toBold(String string, String subString) {
-        if (TextUtils.isEmpty(string)) {
-            return new SpannableStringBuilder("");
-        }
-
-        SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(string);
-
-        StyleSpan bss = new StyleSpan(Typeface.BOLD);
-        if (subString != null) {
-            int substringNameStart = string.toLowerCase().indexOf(subString);
-            if (substringNameStart > -1) {
-                spannableBuilder.setSpan(bss, substringNameStart, substringNameStart + subString.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-        } else {
-            // set entire text to bold
-            spannableBuilder.setSpan(bss, 0, spannableBuilder.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        }
-        return spannableBuilder;
+    public static boolean isValidURL2(String urlStr) {
+        return  Patterns.WEB_URL.matcher(urlStr).matches();
     }
 
     /**
@@ -1295,134 +758,6 @@ public class Utils {
     }
 
     /**
-     * @param ctx
-     * @param savingUri
-     * @param durationInSeconds
-     * @return
-     * @deprecated Use {@link MediaUtils#createTakeVideoIntent(Activity, Uri, int)}
-     * Creates an intent to take a video from camera or gallery or any other application that can
-     * handle the intent.
-     */
-    public static Intent createTakeVideoIntent(Activity ctx, Uri savingUri, int durationInSeconds) {
-
-        if (savingUri == null) {
-            throw new NullPointerException("Uri cannot be null");
-        }
-
-        final List<Intent> cameraIntents = new ArrayList<Intent>();
-        final Intent captureIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        final PackageManager packageManager = ctx.getPackageManager();
-        final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
-        for (ResolveInfo res : listCam) {
-            final String packageName = res.activityInfo.packageName;
-            final Intent intent = new Intent(captureIntent);
-            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            intent.setPackage(packageName);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, savingUri);
-            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, durationInSeconds);
-            cameraIntents.add(intent);
-        }
-
-        // Filesystem.
-        final Intent galleryIntent = new Intent();
-        galleryIntent.setType("video/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-
-        // Chooser of filesystem options.
-        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Select Source");
-
-        // Add the camera options.
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, cameraIntents.toArray(new Parcelable[]{}));
-
-        return chooserIntent;
-    }
-
-    /**
-     * @param savingUri Uri to store a high resolution image at. If the user takes the picture using the
-     *                  camera the image will be stored at this uri.
-     * @deprecated Use {@link MediaUtils#createTakePictureIntent(Activity, Uri)}
-     * Creates a ACTION_IMAGE_CAPTURE photo & ACTION_GET_CONTENT intent. This intent will be
-     * aggregation of intents required to take picture from Gallery and Camera at the minimum. The
-     * intent will also be directed towards the apps that are capable of sourcing the image data.
-     * For e.g. Dropbox, Astro file manager.
-     **/
-    public static Intent createTakePictureIntent(Activity ctx, Uri savingUri) {
-
-        if (savingUri == null) {
-            throw new NullPointerException("Uri cannot be null");
-        }
-
-        final List<Intent> cameraIntents = new ArrayList<Intent>();
-        final Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        final PackageManager packageManager = ctx.getPackageManager();
-        final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
-        for (ResolveInfo res : listCam) {
-            final String packageName = res.activityInfo.packageName;
-            final Intent intent = new Intent(captureIntent);
-            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            intent.setPackage(packageName);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, savingUri);
-            cameraIntents.add(intent);
-        }
-
-        // Filesystem.
-        final Intent galleryIntent = new Intent();
-        galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-
-        // Chooser of filesystem options.
-        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Select Source");
-
-        // Add the camera options.
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, cameraIntents.toArray(new Parcelable[]{}));
-
-        return chooserIntent;
-    }
-
-    @Nullable
-    /**
-     * @deprecated Use {@link MediaUtils#createImageUri(Context)}
-     * Creates external content:// scheme uri to save the images at. The image saved at this
-     * {@link android.net.Uri} will be visible via the gallery application on the device.
-     */
-    public static Uri createImageUri(Context ctx) throws IOException {
-
-        if (ctx == null) {
-            throw new NullPointerException("Context cannot be null");
-        }
-
-        Uri imageUri = null;
-
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.MediaColumns.TITLE, "");
-        values.put(MediaStore.Images.ImageColumns.DESCRIPTION, "");
-        imageUri = ctx.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-
-        return imageUri;
-    }
-
-    @Nullable
-    /**
-     * @deprecated Use {@link MediaUtils#createVideoUri(Context)}
-     * Creates external content:// scheme uri to save the videos at.
-     */
-    public static Uri createVideoUri(Context ctx) throws IOException {
-
-        if (ctx == null) {
-            throw new NullPointerException("Context cannot be null");
-        }
-
-        Uri imageUri;
-
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.MediaColumns.TITLE, "");
-        values.put(MediaStore.Images.ImageColumns.DESCRIPTION, "");
-        imageUri = ctx.getContentResolver().insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, values);
-
-        return imageUri;
-    }
-
-    /**
      * Checks if given url is a relative path.
      */
     public static final boolean isRelativeUrl(String url) {
@@ -1448,19 +783,6 @@ public class Utils {
     }
 
     /**
-     * Hides the already popped up keyboard from the screen.
-     */
-    public static void hideKeyboard(Context context) {
-        try {
-            // use application level context to avoid unnecessary leaks.
-            InputMethodManager inputManager = (InputMethodManager) context.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputManager.hideSoftInputFromWindow(((Activity) context).getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        } catch (Exception e) {
-            Log.e(TAG, "Sigh, cant even hide keyboard " + e.getMessage());
-        }
-    }
-
-    /**
      * Checks if the build version passed as the parameter is
      * lower than the current build version.
      *
@@ -1472,16 +794,55 @@ public class Utils {
         else return false;
     }
 
-    @Nullable
     /**
-     * Partially capitalizes the string from paramter start and offset.
+     * Register a listener for getting updates of device charging, discharging or completely charged.
      */
-    public static String capitalizeString(String string, int start, int offset) {
-        if (TextUtils.isEmpty(string)) {
-            return null;
-        }
-        String formattedString = string.substring(start, offset).toUpperCase() + string.substring(offset, string.length());
-        return formattedString;
+    public static void registerBatteryChangeBroadcastReceiver(Context context,
+                                                              final BatteryChargeListener batteryChargeListener) {
+        final IntentFilter theFilter = new IntentFilter();
+        /* System Defined Broadcast */
+        theFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
+
+        BroadcastReceiver batteryChargeReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
+
+                if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
+                    // Is Charging
+                    batteryChargeListener.isCharging();
+                }
+                if (status == BatteryManager.BATTERY_STATUS_FULL) {
+                    // Is Full
+                    batteryChargeListener.isFull();
+                } else {
+                    // Is Discharging
+                    batteryChargeListener.isDiscahrging();
+                }
+            }
+        };
+        context.getApplicationContext().registerReceiver(batteryChargeReceiver, theFilter);
+    }
+
+    /**
+     * The interface Battery charge listener.
+     */
+    public interface BatteryChargeListener {
+
+        /**
+         * Is charging.
+         */
+        void isCharging();
+
+        /**
+         * Is discahrging.
+         */
+        void isDiscahrging();
+
+        /**
+         * Is full.
+         */
+        void isFull();
     }
 
 }

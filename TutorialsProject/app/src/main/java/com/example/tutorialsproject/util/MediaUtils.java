@@ -30,7 +30,7 @@ public class MediaUtils {
 
     /**
      * Get runtime duration of media such as audio or video in milliseconds
-     ****/
+     **/
     public static long getDuration(Context ctx, Uri mediaUri) {
         Cursor cur = ctx.getContentResolver().query(mediaUri, new String[]{MediaStore.Video.Media.DURATION}, null, null, null);
         long duration = -1;
@@ -60,7 +60,7 @@ public class MediaUtils {
 
     /**
      * Checks if the parameter {@link android.net.Uri} is a Media content uri.
-     ****/
+     **/
     public static boolean isMediaContentUri(Uri uri) {
         if (!uri.toString().contains("content://media/")) {
             Log.w(TAG, "#isContentUri The uri is not a media content uri");
@@ -68,6 +68,34 @@ public class MediaUtils {
         } else {
             return true;
         }
+    }
+
+    /**
+     * Get the file path from the Media Content Uri for video, audio or images.
+     **/
+    public static String getPathForMediaUri(Context context, Uri mediaContentUri) {
+
+        Cursor cur = null;
+        String path = null;
+
+        try {
+            String[] projection = {MediaStore.MediaColumns.DATA};
+            cur = context.getContentResolver().query(mediaContentUri, projection, null, null, null);
+
+            if (cur != null && cur.getCount() != 0) {
+                cur.moveToFirst();
+                path = cur.getString(cur.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA));
+            }
+
+            // Log.v( TAG, "#getRealPathFromURI Path: " + path );
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cur != null && !cur.isClosed())
+                cur.close();
+        }
+
+        return path;
     }
 
     /**
@@ -150,31 +178,10 @@ public class MediaUtils {
         return chooserIntent;
     }
 
-    @Nullable
-    /**
-     * Creates external content:// scheme uri to save the images at. The image saved at this
-     * {@link android.net.Uri} will be visible via the gallery application on the device.
-     **/
-    public static Uri createImageUri(Context ctx) throws IOException {
-
-        if (ctx == null) {
-            throw new NullPointerException("Context cannot be null");
-        }
-
-        Uri imageUri = null;
-
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.MediaColumns.TITLE, "");
-        values.put(MediaStore.Images.ImageColumns.DESCRIPTION, "");
-        imageUri = ctx.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-
-        return imageUri;
-    }
-
-    @Nullable
     /**
      * Creates external content:// scheme uri to save the videos at.
      **/
+    @Nullable
     public static Uri createVideoUri(Context ctx) throws IOException {
 
         if (ctx == null) {
@@ -191,10 +198,11 @@ public class MediaUtils {
         return imageUri;
     }
 
-    @Nullable
+
     /**
      * Gets media type from the Uri.
      */
+    @Nullable
     public static String getMediaType(Uri uri) {
         if (uri == null) {
             return null;
@@ -290,20 +298,6 @@ public class MediaUtils {
     }
 
     /**
-     * Returns true if the mime type is a standard image mime type
-     */
-    public static boolean isImage(String mimeType) {
-        // TODO: apply regex patter for checking the MIME type
-        if (mimeType != null) {
-            if (mimeType.startsWith("image/"))
-                return true;
-            else
-                return false;
-        } else
-            return false;
-    }
-
-    /**
      * Returns true if the mime type is a standard audio mime type
      */
     public static boolean isAudio(String mimeType) {
@@ -365,7 +359,7 @@ public class MediaUtils {
                 return "video";
             else if (isAudio(contentType))
                 return "audio";
-            else if (isImage(contentType))
+            else if (ImageUtils.isImage(contentType))
                 return "image";
             else
                 return null;
@@ -374,41 +368,4 @@ public class MediaUtils {
         }
     }
 
-    /**
-     * Writes the given image to the external storage of the device. If external storage is not
-     * available, the image is written to the application private directory
-     *
-     * @return Path of the image file that has been written.
-     **/
-    public static String writeImage(Context ctx, byte[] imageData) {
-
-        final String FILE_NAME = "photograph.jpeg";
-        File dir = null;
-        String filePath = null;
-        OutputStream imageFileOS;
-
-        dir = Utils.getStorageDirectory(ctx, null);
-
-        // dir.mkdirs();
-        File f = new File(dir, FILE_NAME);
-
-        // File f = getFile( FILE_NAME );
-
-        try {
-            imageFileOS = new FileOutputStream(f);
-            imageFileOS.write(imageData);
-            imageFileOS.flush();
-            imageFileOS.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        filePath = f.getAbsolutePath();
-
-        return filePath;
-    }
 }

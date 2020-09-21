@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="red">#FF0000</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="gray">#808080</color>
+    <color name="olive">#808000</color>
+    <color name="purple">#800080</color>
+    <color name="maroon">#800000</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="lime">#00FF00</color>
+    <color name="teal">#008080</color>
+    <color name="green">#008000</color>
+    <color name="blue">#0000FF</color>
+    <color name="navy">#000080</color>
+    <color name="black">#000000</color>
+    <color name="cccccc">#CCCCCC</color>
+    <color name="lightgray">#E5E4E2</color>
+    <color name="lightgreen">#00CC66</color>
+    <color name="khakhi">#5a5959</color>
+    <color name="bluesilk">#488AC7</color>
+    <color name="lightblue">#728FCE</color>
+
+    <color name="red1">#af0a0a</color>
+    <color name="red2">#c40909</color>
+    <color name="red3">#e50909</color>
+    <color name="blue1">#66a3ff</color>
+    <color name="blue2">#0033cc</color>
+    <color name="linkBlue">#4d94ff</color>
+    <color name="blue3">#00c4cc</color>
+    <color name="blue4">#00aab1</color>
+    <color name="blue5">#007f85</color>
+    <color name="blue6">#00494d</color>
+    <color name="White">#fff</color>
+    <color name="darkGrey">#a6a6a6 </color>
+    <color name="Grey">#c3c3c3 </color>
+    <color name="mediumLightGrey">#d9d9d9 </color>
+    <color name="lightGrey">#f2f2f2 </color>
+    <color name="DarkGrey">#4d4d4d </color>
+    <color name="Black">#000 </color>
+    <color name="RatingBar">#ff9900</color>
+
+    <color name="lightOrange">#ffebcc</color>
+    <color name="mediumLightOrange">#ffcc80</color>
+    <color name="orange">#ffad33</color>
+    <color name="darkOrange">#ff9900</color>
+</resources>

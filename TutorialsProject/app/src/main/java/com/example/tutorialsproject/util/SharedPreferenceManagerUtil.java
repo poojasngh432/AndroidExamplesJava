@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SharedPreferenceManagerUtil {
+    private static final String TAG = SharedPreferenceManagerUtil.class.getSimpleName();
 
     protected Context mContext;
 

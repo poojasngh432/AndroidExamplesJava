@@ -1,7 +1,6 @@
 package com.example.tutorialsproject.Interface;
 
 import com.example.tutorialsproject.database.model.ComplimentModel;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 

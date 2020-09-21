@@ -6,10 +6,75 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
 public class DateUtilsClass {
+    private static final String TAG = DateUtilsClass.class.getSimpleName();
+
+    public static String getCurrentDateTime(String format){
+        return getTimeByFormat(format);
+    }
+
+    public static String getCurrentTime(String format){
+        return getTimeByFormat(format);
+    }
+
+    public static String getCurrentDateTime() {
+        return  getTimeByFormat("dd-MMM-yyyy hh:mm:ss");
+    }
+
+    public static  String getCurrentTime(){
+        return  getTimeByFormat("hh:mm");
+    }
+
+    private static String getTimeByFormat(String format){
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat(format);
+        df.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
+        String formattedDate = df.format(c.getTime());
+        return formattedDate ;
+    }
+
+    /**
+     * Transforms Calendar to ISO 8601 string.
+     **/
+    public static String fromCalendar(final Calendar calendar) {
+        Date date = calendar.getTime();
+        String formatted = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(date);
+        return formatted.substring(0, 22) + ":" + formatted.substring(22);
+    }
+
+    /**
+     * Gets current date and time formatted as ISO 8601 string.
+     **/
+    public static String now() {
+        return fromCalendar(GregorianCalendar.getInstance());
+    }
+
+    /**
+     * Transforms ISO 8601 string to Calendar.
+     **/
+    public static Calendar toCalendar(final String iso8601string) throws ParseException {
+        Calendar calendar = GregorianCalendar.getInstance();
+        String s = iso8601string.replace("Z", "+00:00");
+        try {
+            s = s.substring(0, 22) + s.substring(23);
+        } catch (IndexOutOfBoundsException e) {
+            // throw new org.apache.http.ParseException();
+            e.printStackTrace();
+        }
+
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").parse(s);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        calendar.setTime(date);
+        return calendar;
+    }
 
     /***
      * Converts ISO date string to UTC timezone equivalent.
@@ -115,6 +180,60 @@ public class DateUtilsClass {
 
             case Calendar.SATURDAY:
                 dayStr = "Sat";
+                break;
+        }
+
+        return dayStr;
+    }
+
+    /**
+     * Gets the name of the day of the week.
+     **/
+    public static String getDayOfWeek(String date) {
+        Date dateDT = DateUtilsClass.parseDate(date);
+
+        if (dateDT == null) {
+            return null;
+        }
+
+        // Get current date
+        Calendar c = Calendar.getInstance();
+        // it is very important to
+        // set the date of
+        // the calendar.
+        c.setTime(dateDT);
+        int day = c.get(Calendar.DAY_OF_WEEK);
+
+        String dayStr = null;
+
+        switch (day) {
+
+            case Calendar.SUNDAY:
+                dayStr = "Sunday";
+                break;
+
+            case Calendar.MONDAY:
+                dayStr = "Monday";
+                break;
+
+            case Calendar.TUESDAY:
+                dayStr = "Tuesday";
+                break;
+
+            case Calendar.WEDNESDAY:
+                dayStr = "Wednesday";
+                break;
+
+            case Calendar.THURSDAY:
+                dayStr = "Thursday";
+                break;
+
+            case Calendar.FRIDAY:
+                dayStr = "Friday";
+                break;
+
+            case Calendar.SATURDAY:
+                dayStr = "Saturday";
                 break;
         }
 
@@ -278,20 +397,9 @@ public class DateUtilsClass {
     /**
      * Gets a string TimeStamp phrase like 5 mins ago
      * yesterday, 3 days ago.
-     *
-     * <br/>
-     * <br/>
-     *
-     * sample usage
-     *
-     *  * <pre>
-     *
      * {
      * 	String timeStamp = getTimeStamp(originalDate);
-     *
      * }
-     * </pre>
-     *
      * @param originalDate
      * @return convertedDate String
      *
@@ -309,20 +417,9 @@ public class DateUtilsClass {
     /**
      * Gets a string TimeStamp phrase like 5 mins ago
      * yesterday, 3 days ago.
-     *
-     * <br/>
-     * <br/>
-     *
-     * sample usage
-     *
-     *  * <pre>
-     *
      * {
      * 	String timeStamp = getTimeStamp(originalDate);
-     *
      * }
-     * </pre>
-     *
      * @param originalDateTime time in miliseconds since epoch
      * @return convertedDate String
      *
