@@ -23,13 +23,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.DataBindingActivity">
+        <activity android:name=".activity.UserProfile"></activity>
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.SignupActivity"></activity>
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.DIActivity" />
+        <activity android:name=".activity.DataBindingActivity"></activity>
         <activity android:name=".activity.SecondActivity" />
 
         <service
@@ -40,9 +45,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".activity.IntentsActivity">
-
-        </activity>
+        <activity android:name=".activity.IntentsActivity" />
         <activity android:name=".activity.MainActivity" />
 
         <receiver android:name=".MyBroadcastReceiver">

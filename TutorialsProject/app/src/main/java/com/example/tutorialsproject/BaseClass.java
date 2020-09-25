@@ -28,7 +28,7 @@ public class BaseClass extends Application {
         super.onCreate();
         instance = this;
 
-        UiUtil.showToast(this,"App started");
+        //UiUtil.showToast(this,"App started");
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
