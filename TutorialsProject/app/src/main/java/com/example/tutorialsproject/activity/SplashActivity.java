@@ -49,7 +49,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run(){
                 //Call next screen
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -16,7 +16,7 @@
         android:src="@drawable/ic_bus"
         android:transitionName="logo_image"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="100dp"/>
 
     <TextView
         android:id="@+id/textView"
@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="casual"
-        android:text="Bull's Rent"
+        android:text="Tutorials Project"
         android:textAlignment="center"
-        android:textSize="70sp"
+        android:textSize="50sp"
         android:transitionName="logo_text"
-        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         android:layout_gravity="center"
         android:textColor="@color/yellow"/>
 
@@ -37,7 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="Nation wide Car rental app"
+        android:text="example working and codes of android components"
+        android:padding="10dp"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_5"
         android:textAlignment="center"
         android:textSize="18sp"
         android:layout_gravity="center"
