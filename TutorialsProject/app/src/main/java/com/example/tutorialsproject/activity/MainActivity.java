@@ -15,7 +15,7 @@ import com.example.tutorialsproject.util.SingletonClass;
 import com.example.tutorialsproject.util.UiUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12;
 
 
     @Override
@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn5 = findViewById(R.id.btn5);
         btn6 = findViewById(R.id.btn6);
         btn7 = findViewById(R.id.btn7);
+        btn8 = findViewById(R.id.btn8);
+        btn9 = findViewById(R.id.btn9);
+        btn10 = findViewById(R.id.btn10);
+        btn11 = findViewById(R.id.btn11);
+        btn12 = findViewById(R.id.btn12);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -38,6 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn5.setOnClickListener(this);
         btn6.setOnClickListener(this);
         btn7.setOnClickListener(this);
+        btn8.setOnClickListener(this);
+        btn9.setOnClickListener(this);
+        btn10.setOnClickListener(this);
+        btn11.setOnClickListener(this);
+        btn12.setOnClickListener(this);
 
     }
 
@@ -67,6 +77,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn7: intent = new Intent(MainActivity.this,ContentProviderActivity.class);
                             startActivity(intent);
                             break;
+            case R.id.btn8: intent = new Intent(MainActivity.this,LifecycleActivity.class);
+                            startActivity(intent);
+                            break;
+            case R.id.btn9: intent = new Intent(MainActivity.this,PermissionsActivity.class);
+                            startActivity(intent);
+                            break;
+            case R.id.btn10: intent = new Intent(MainActivity.this,SignupActivity.class);
+                             startActivity(intent);
+                             break;
+            case R.id.btn11: intent = new Intent(MainActivity.this,SingletonActivity.class);
+                             startActivity(intent);
+                             break;
+            case R.id.btn12: intent = new Intent(MainActivity.this,ContentProviderActivity.class);
+                             startActivity(intent);
+                             break;
              default: break;
         }
     }

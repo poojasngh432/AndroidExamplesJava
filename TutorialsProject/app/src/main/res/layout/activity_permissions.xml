@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activity.PermissionsActivity"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Load Contacts"
         android:textColor="@android:color/white"
-        android:background="@android:color/holo_purple"
+        android:background="@drawable/rounded_corner_blue"
         android:layout_margin="15dp"/>
 
     <Button
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Multiple Permissions"
         android:textColor="@android:color/white"
-        android:background="@android:color/holo_purple"
+        android:background="@drawable/rounded_corner_blue"
         android:layout_margin="15dp"/>
 
 </LinearLayout>

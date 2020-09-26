@@ -1,19 +1,18 @@
-package com.example.permissionsexample;
+package com.example.tutorialsproject.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.tutorialsproject.R;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends BaseActivity {
+public class PermissionsActivity extends BaseActivity {
 
     private int MY_PERMISSION_REQUEST_READ_CONTACTS = 20;
     private int MY_PERMISSION_REQUEST_WRITE_CONTACTS = 30;
@@ -21,7 +20,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_permissions);
 
         findViewById(R.id.btn_load_contacts).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,9 +34,9 @@ public class MainActivity extends BaseActivity {
             public void onClick(View view) {
 
                 if((checkWhetherAllPermissionsPresentForPhotoTagging())){
-                    Toast.makeText(MainActivity.this, R.string.permissions_granted, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PermissionsActivity.this, R.string.permissions_granted, Toast.LENGTH_SHORT).show();
                 }else{
-                    requestRunTimePermissions(MainActivity.this, permissionsNeededForPhotoTagging, MY_PHOTO_TAGGING_PERMISSIONS);
+                    requestRunTimePermissions(PermissionsActivity.this, permissionsNeededForPhotoTagging, MY_PHOTO_TAGGING_PERMISSIONS);
                 }
             }
         });
@@ -57,7 +56,7 @@ public class MainActivity extends BaseActivity {
                         new View.OnClickListener(){
                             @Override
                             public void onClick(View v){
-                                ActivityCompat.requestPermissions(MainActivity.this, getDeniedPermissionsAmongPhototaggingPermissions(), MY_PHOTO_TAGGING_PERMISSIONS);
+                                ActivityCompat.requestPermissions(PermissionsActivity.this, getDeniedPermissionsAmongPhototaggingPermissions(), MY_PHOTO_TAGGING_PERMISSIONS);
                             }
                         }).show();
             }
@@ -68,16 +67,16 @@ public class MainActivity extends BaseActivity {
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED){
             Toast.makeText(this, "All permissions given", Toast.LENGTH_SHORT).show();   //means permission is granted
         }else{
-           //it reaches here if it's the first run of the appl or was denied permission before
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_CONTACTS)){
+            //it reaches here if it's the first run of the appl or was denied permission before
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)){
                 //return the rationale
-                Snackbar.make(findViewById(android.R.id.content),"Need permission for loading data",Snackbar.LENGTH_INDEFINITE).setAction("ENABLE",
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v){
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_CONTACTS}, MY_PERMISSION_REQUEST_READ_CONTACTS);
-                    }
-                }).show();
+                Snackbar.make(findViewById(android.R.id.content),"Need permission for loading data", Snackbar.LENGTH_INDEFINITE).setAction("ENABLE",
+                        new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v){
+                                ActivityCompat.requestPermissions(PermissionsActivity.this, new String[]{Manifest.permission.READ_CONTACTS}, MY_PERMISSION_REQUEST_READ_CONTACTS);
+                            }
+                        }).show();
 
             }else{
                 //or directly ask for permission

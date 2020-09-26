@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.LifecycleActivity">
 
     <Button
         android:id="@+id/btn_activity_2"
@@ -16,6 +16,6 @@
         android:gravity="center"
         android:padding="10dp"
         android:layout_margin="20dp"
-        android:background="@android:color/holo_blue_light"/>
+        android:background="@drawable/rounded_corner_blue"/>
 
 </LinearLayout>

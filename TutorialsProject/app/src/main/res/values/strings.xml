@@ -10,4 +10,6 @@
     <!-- Strings -->
     <string name="dialog_quantity_title">Qty: </string>
 
+    <string name="permissions_granted">You have all the permissions</string>
+
 </resources>

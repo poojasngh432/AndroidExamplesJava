@@ -13,6 +13,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:name=".BaseClass"
@@ -23,7 +27,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.ContentProviderActivity"></activity>
+        <activity android:name=".activity.BaseActivity"></activity>
+        <activity android:name=".activity.PermissionsActivity" />
+        <activity android:name=".activity.LifecycleActivity" />
+        <activity android:name=".activity.ContentProviderActivity" />
         <activity android:name=".activity.SingletonActivity" />
         <activity android:name=".activity.UserProfile" />
         <activity android:name=".activity.SplashActivity">
@@ -56,9 +63,9 @@
             </intent-filter>
         </receiver>
 
-        <provider android:name=".helper.StudentsProvider"
-            android:authorities="com.example.tutorialsproject.helper.StudentsProvider"/>
-
+        <provider
+            android:name=".helper.StudentsProvider"
+            android:authorities="com.example.tutorialsproject.helper.StudentsProvider" />
     </application>
 
 </manifest>

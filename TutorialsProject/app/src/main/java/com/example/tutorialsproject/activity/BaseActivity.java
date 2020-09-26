@@ -1,4 +1,4 @@
-package com.example.permissionsexample;
+package com.example.tutorialsproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.tutorialsproject.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     protected int MY_PERMISSION_REQUEST_WRITE_CONTACTS = 30;
     protected int MY_PHOTO_TAGGING_PERMISSIONS = 40;
 
-    protected final String [] permissionsNeededForPhotoTagging =new String[]{Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION};
+    protected final String [] permissionsNeededForPhotoTagging = new String[]{Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION};
 
     String [] deniedPermissionsAmongPhotoTagging;
 
@@ -120,15 +121,14 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
 
         switch (item.getItemId()){
             case R.id.appPermissions: startAppPermissions();
-                                      break;
+                break;
             default: break;
         }
         return true;
     }
 
     private void startAppPermissions(){
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                Uri.fromParts("package", getPackageName(), null));
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", getPackageName(), null));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

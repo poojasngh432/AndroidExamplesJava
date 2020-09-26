@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">PermissionsExample</string>
-    <string name="permissions_granted">You have all the permissions</string>
-</resources>
