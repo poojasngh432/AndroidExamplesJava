@@ -141,7 +141,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn10"
-                android:text="Freeze layout"
+                android:text="Service(Play Music) "
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:padding="@dimen/dp_10"

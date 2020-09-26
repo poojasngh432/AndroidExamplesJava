@@ -1,6 +1,7 @@
 package com.example.tutorialsproject.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -21,6 +22,10 @@ public class PermissionsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permissions);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar.setTitle("Permissions");
+        setSupportActionBar(myToolbar);
 
         findViewById(R.id.btn_load_contacts).setOnClickListener(new View.OnClickListener() {
             @Override

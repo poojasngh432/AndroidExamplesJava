@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn9: intent = new Intent(MainActivity.this,PermissionsActivity.class);
                             startActivity(intent);
                             break;
-            case R.id.btn10: intent = new Intent(MainActivity.this,SignupActivity.class);
+            case R.id.btn10: intent = new Intent(MainActivity.this,ServiceActivity.class);
                              startActivity(intent);
                              break;
             case R.id.btn11: intent = new Intent(MainActivity.this,SingletonActivity.class);
