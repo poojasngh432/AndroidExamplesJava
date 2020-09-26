@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.SingletonActivity"></activity>
+        <activity android:name=".activity.ContentProviderActivity"></activity>
+        <activity android:name=".activity.SingletonActivity" />
         <activity android:name=".activity.UserProfile" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
@@ -54,6 +55,10 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
+        <provider android:name=".helper.StudentsProvider"
+            android:authorities="com.example.tutorialsproject.helper.StudentsProvider"/>
+
     </application>
 
 </manifest>

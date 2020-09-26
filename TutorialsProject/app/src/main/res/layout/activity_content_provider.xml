@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingRight="@dimen/dp_10"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    tools:context=".activity.ContentProviderActivity">
 
     <TextView
         android:id="@+id/textView1"
@@ -22,49 +22,47 @@
         android:textColor="@android:color/holo_purple"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dp_250"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
         android:layout_below="@+id/textView1"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignStart="@+id/textView1"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_alignEnd="@+id/textView1"
         android:hint="Name"
-        android:textColorHint="@android:color/darker_gray" />
+        android:padding="@dimen/dp_15"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dp_250"
         android:layout_height="wrap_content"
         android:id="@+id/editText3"
         android:layout_below="@+id/editText2"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
         android:hint="Grade"
-        android:textColorHint="@android:color/darker_gray" />
+        android:padding="@dimen/dp_15"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dp_250"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:id="@+id/add_name_btn"
         android:text="Add Name"
-        android:layout_centerInParent="true"
+        android:textColor="@color/white"
         android:layout_below="@+id/editText3"
-        android:gravity="center_horizontal"
-        android:onClick="onClickAddName"/>
+        android:gravity="center"
+        android:onClick="onClickAddName"
+        android:layout_marginTop="@dimen/dp_15"
+        android:background="@drawable/rounded_corner_blue"
+        android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dp_250"
         android:layout_height="wrap_content"
         android:text="Retrive student"
-        android:id="@+id/button"
-        android:layout_below="@+id/button2"
-        android:layout_alignRight="@+id/editText3"
-        android:layout_alignEnd="@+id/editText3"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_centerInParent="true"
-        android:onClick="onClickRetrieveStudents"/>
+        android:id="@+id/retrieve_student_btn"
+        android:textColor="@color/white"
+        android:layout_below="@+id/add_name_btn"
+        android:layout_marginTop="@dimen/dp_15"
+        android:onClick="onClickRetrieveStudents"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corner_blue"/>
 </RelativeLayout>

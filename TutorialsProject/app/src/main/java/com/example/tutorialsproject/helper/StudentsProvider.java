@@ -1,4 +1,4 @@
-package com.example.contentprovidersex;
+package com.example.tutorialsproject.helper;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -16,13 +16,18 @@ import android.text.TextUtils;
 import java.util.HashMap;
 
 public class StudentsProvider extends ContentProvider {
-    static final String PROVIDER_NAME = "com.example.contentprovidersex.StudentsProvider";
-    static final String URL = "content://" + PROVIDER_NAME + "/students";
-    static final Uri CONTENT_URI = Uri.parse(URL);
 
-    static final String _ID = "_id";
-    static final String NAME = "name";
-    static final String GRADE = "grade";
+    public static final String PROVIDER_NAME = "com.example.tutorialsproject.helper.StudentsProvider";
+    public static final String URL = "content://" + PROVIDER_NAME + "/students";
+    public static final Uri CONTENT_URI = Uri.parse(URL);
+    /**
+    * to identify the data in the provider we should use Content URIs. A Content URI has the following format:
+     * content://<authority>/<path>
+    */
+
+    public static final String _ID = "_id";
+    public static final String NAME = "name";
+    public static final String GRADE = "grade";
 
     private static HashMap<String, String> STUDENTS_PROJECTION_MAP;
 
@@ -30,6 +35,7 @@ public class StudentsProvider extends ContentProvider {
     static final int STUDENT_ID = 2;
 
     static final UriMatcher uriMatcher;
+
     static{
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(PROVIDER_NAME, "students", STUDENTS);
@@ -106,8 +112,7 @@ public class StudentsProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection,
-                        String selection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(STUDENTS_TABLE_NAME);
 
@@ -115,11 +120,9 @@ public class StudentsProvider extends ContentProvider {
             case STUDENTS:
                 qb.setProjectionMap(STUDENTS_PROJECTION_MAP);
                 break;
-
             case STUDENT_ID:
                 qb.appendWhere( _ID + "=" + uri.getPathSegments().get(1));
                 break;
-
             default:
         }
 
@@ -150,7 +153,7 @@ public class StudentsProvider extends ContentProvider {
             case STUDENT_ID:
                 String id = uri.getPathSegments().get(1);
                 count = db.delete( STUDENTS_TABLE_NAME, _ID +  " = " + id +
-                                (!TextUtils.isEmpty(selection) ? " AND (" + selection + ')' : ""), selectionArgs);
+                        (!TextUtils.isEmpty(selection) ? " AND (" + selection + ')' : ""), selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
