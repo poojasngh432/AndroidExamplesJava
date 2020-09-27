@@ -15,7 +15,7 @@ import com.example.tutorialsproject.util.SingletonClass;
 import com.example.tutorialsproject.util.UiUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13;
 
 
     @Override
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn10 = findViewById(R.id.btn10);
         btn11 = findViewById(R.id.btn11);
         btn12 = findViewById(R.id.btn12);
+        btn13 = findViewById(R.id.btn13);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn10.setOnClickListener(this);
         btn11.setOnClickListener(this);
         btn12.setOnClickListener(this);
+        btn13.setOnClickListener(this);
 
     }
 
@@ -89,9 +91,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn11: intent = new Intent(MainActivity.this,NetworkingActivity.class);
                              startActivity(intent);
                              break;
-            case R.id.btn12: intent = new Intent(MainActivity.this,LVandRV.class);
+            case R.id.btn12: intent = new Intent(MainActivity.this,LVandRVActivity.class);
                              startActivity(intent);
                              break;
+            case R.id.btn13: intent = new Intent(MainActivity.this,AsyncTaskActivity.class);
+                             startActivity(intent);
+                             break;
+
              default: break;
         }
     }

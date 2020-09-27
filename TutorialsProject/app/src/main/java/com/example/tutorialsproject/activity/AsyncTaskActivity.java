@@ -1,4 +1,4 @@
-package com.example.asynctasksproject;
+package com.example.tutorialsproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.tutorialsproject.R;
+
 import java.util.Random;
 
 public class AsyncTaskActivity extends AppCompatActivity {
-    public static final String TAG = "AT";
 
+    public static final String TAG = "AT";
     TextView tvCounter;
     Button btnStart, btnRandom;
 
@@ -38,18 +40,18 @@ public class AsyncTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CountTask countTask = new CountTask();
-                countTask.execute(5);
+                countTask.execute(10);
             }
         });
     }
 
-    class CountTask extends AsyncTask<Integer, Integer, Void>{
+    class CountTask extends AsyncTask<Integer, Integer, Void> {
 
         @Override
         protected Void doInBackground(Integer... integers) {
             Log.d(TAG,"doInBackground: started");
             int n = integers[0];
-            for(int i = 0; i < n; i++){
+            for(int i = 0; i <= n; i++){
                 wait1Sec();
                 publishProgress(i);
             }

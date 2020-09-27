@@ -27,7 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.LVandRVActivity"></activity>
+        <activity android:name=".activity.AsyncTaskActivity"></activity>
+        <activity android:name=".activity.LVandRVActivity" />
         <activity android:name=".activity.NetworkingActivity" />
 
         <service

@@ -129,7 +129,7 @@
             android:orientation="horizontal">
             <Button
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/btn9"
                 android:text="Permissions"
                 android:textColor="@color/white"
@@ -139,7 +139,7 @@
                 android:background="@drawable/rounded_cornered_blue_background_new"/>
             <Button
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/btn10"
                 android:text="Service(Play Music) "
                 android:textColor="@color/white"
@@ -168,7 +168,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn12"
-                android:text="Permissions"
+                android:text="LV and RV"
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:padding="@dimen/dp_10"
@@ -185,7 +185,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn13"
-                android:text="Send Email"
+                android:text="AsyncTask"
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:padding="@dimen/dp_10"
