@@ -1,6 +1,8 @@
 package com.example.tutorialsproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tutorialsproject.R;
+import com.example.tutorialsproject.adapter.RepoAdapter;
 import com.example.tutorialsproject.database.model.GithubUser;
 
 import org.json.JSONArray;
@@ -26,6 +29,9 @@ import java.util.Scanner;
 
 public class NetworkingActivity extends AppCompatActivity {
 
+    private RecyclerView recyclerView = null;
+    private RepoAdapter repoAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +42,15 @@ public class NetworkingActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateTV();
+                updateView();
             }
         });
     }
 
-    private void updateTV() {
+    private void updateView() {
+        repoAdapter = null;
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
         //Make the network call here
 
         NetworkTask networkTask = new NetworkTask();
@@ -77,8 +86,12 @@ public class NetworkingActivity extends AppCompatActivity {
             super.onPostExecute(s);
             ArrayList<GithubUser> users = parseJson(s);
             Log.e("TAG","onPostExecute: " + users.size());
-            TextView tv = findViewById(R.id.textView);
-            tv.setText(s);
+
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(NetworkingActivity.this));
+            repoAdapter = new RepoAdapter(users, R.layout.list_item_github_repo, getApplicationContext());
+            recyclerView.setAdapter(repoAdapter);
+            repoAdapter.notifyDataSetChanged();
         }
     }
 
