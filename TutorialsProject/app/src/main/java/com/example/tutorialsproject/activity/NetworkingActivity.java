@@ -1,4 +1,4 @@
-package com.example.networkingproject;
+package com.example.tutorialsproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.tutorialsproject.R;
+import com.example.tutorialsproject.database.model.GithubUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,12 +24,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MainActivity extends AppCompatActivity {
+public class NetworkingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_networking);
+
         Button btn = findViewById(R.id.btn);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         networkTask.execute("https://api.github.com/search/users?q=jake+wharton");
     }
 
-    class NetworkTask extends AsyncTask<String, Void, String>{
+    class NetworkTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -103,4 +107,5 @@ public class MainActivity extends AppCompatActivity {
 
         return githubUsers;
     }
+
 }

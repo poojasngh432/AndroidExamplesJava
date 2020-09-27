@@ -14,7 +14,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         if(intent.getAction().equals(SMS_RECEIVED)){
-            UiUtil.showToast(context,"broadcast receiver triggered");
+            UiUtil.showToast(context,"broadcast receiver: You have a message.");
         }
 
     }
