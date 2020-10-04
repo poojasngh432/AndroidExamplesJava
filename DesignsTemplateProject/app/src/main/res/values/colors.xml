@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray_light1">#E5E4E2</color>
+    <color name="gray_light2">#CCCCCC</color>
+    <color name="gray_light3">#c3c3c3</color>
+    <color name="gray_light4">#d9d9d9</color>
+    <color name="gray_light5">#f2f2f2</color>
+    <color name="gray_silver">#C0C0C0</color>
+    <color name="gray_dark1">#a6a6a6</color>
+    <color name="gray_dark2">#808080</color>
+    <color name="gray_dark3">#4d4d4d</color>
+    <color name="black">#000000</color>
+
+    <color name="yellow">#FFFF00</color>
+
+    <color name="skin1">#ffebcc</color>
+    <color name="skin2">#ffcc80</color>
+
+    <color name="orange1">#ff9900</color>
+    <color name="orange2">#ffad33</color>
+    <color name="orange3">#ff9900</color>
+
+    <color name="red1">#FF0000</color>
+    <color name="red2">#e50909</color>
+    <color name="red3">#FF0000</color>
+    <color name="salmon_red">#FA8072</color>
+    <color name="indian_red">#CD5C5C</color>
+    <color name="firebrick_red">#B22222</color>
+    <color name="orange_red">#FF4500</color>
+    <color name="maroon_red">#800000</color>
+    <color name="dark_red">#8B0000</color>
+    <color name="crimson_red">#DC143C</color>
+    <color name="burgundy_red">#8D021F</color>
+    <color name="persian_red">#CA3433</color>
+    <color name="us_flag_red">#BF0A30</color>
+    <color name="raspberry_red">#D21F3C</color>
+    <color name="hibiscus_red">#B43757</color>
+    <color name="candy_apple_red">#FF0800</color>
+    <color name="vermillion_red">#7E191B</color>
+    <color name="desire_red">#EA3C53</color>
+    <color name="ruby_red">#E0115F</color>
+    <color name="chilli_red">#C21807</color>
+    <color name="imperial_red">#ED2939</color>
+    <color name="scarlett_red">#FF2400</color>
+    <color name="tomato_red">#e75850</color>
+    <color name="red_dark1">#af0a0a</color>
+    <color name="red_dark2">#c40909</color>
+    <color name="red_maroon">#800000</color>
+
+    <color name="pink_light1">#fedfe8</color>
+    <color name="pink_light2">#fecfdd</color>
+    <color name="pink_light3">#febfd2</color>
+    <color name="pink_light4">#fedbeb</color>
+    <color name="pink1">#FD6190</color>
+    <color name="pink2">#ff5194</color>
+    <color name="pink3">#FF4081</color>
+    <color name="pink_fuchsia">#FF00FF</color>
+
+    <color name="purple_light1">#fad7ff</color>
+    <color name="purple_light2">#fce4ff</color>
+    <color name="purple_light3">#fdf1ff</color>
+    <color name="purple_light4">#ccccff</color>
+    <color name="purple1">#800080</color>
+    <color name="purple2">#470b4d</color>
+
+    <color name="blue_light1">#728FCE</color>
+    <color name="blue_light2">#66a3ff</color>
+    <color name="blue_light3">#488AC7</color>
+    <color name="blue_light4">#4d94ff</color>
+    <color name="blue_light5">#C0F8FF</color>
+    <color name="blue_light6">#40BBF8</color>
+    <color name="blue_light7">#33b5e5</color>
+    <color name="blue_aqua">#00FFFF</color>
+    <color name="blue_dark1">#0000FF</color>
+    <color name="blue_dark2">#0033cc</color>
+    <color name="blue_dark3">#277fd5</color>
+    <color name="blue_dark4">#0094DE</color>
+    <color name="blue_dark5">#0093dd</color>
+    <color name="blue_navy">#000080</color>
+
+    <color name="green_light1">#ccffcc</color>
+    <color name="green_light2">#00FF00</color>
+    <color name="green_light3">#00CC66</color>
+    <color name="green_light4">#ADFF2F</color>
+    <color name="green_light5">#00FF7F</color>
+    <color name="green_light6">#90EE90</color>
+    <color name="green_light7">#98FB98</color>
+    <color name="green_light8">#8CDD81</color>
+    <color name="green_turquoise1">#00c4cc</color>
+    <color name="green_turquoise2">#00aab1</color>
+    <color name="green_teal">#008080</color>
+    <color name="green_dark1">#008000</color>
+    <color name="green_dark2">#007f85</color>
+    <color name="green_dark3">#00494d</color>
+    <color name="green_dark4">#004a4a</color>
+    <color name="green_dark5">#548B54</color>
+    <color name="green_dark6">#458B00</color>
+    <color name="green_dark7">#228B22</color>
+    <color name="green_dark8">#008000</color>
+    <color name="green_olive">#808000</color>
+
+    <color name="brown_dark1">#341919</color>
+    <color name="brown_dark2">#572a2a</color>
+    <color name="brown_dark3">#4a0000</color>
+</resources>
