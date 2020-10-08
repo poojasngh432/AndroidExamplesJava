@@ -15,8 +15,7 @@ import com.example.tutorialsproject.util.SingletonClass;
 import com.example.tutorialsproject.util.UiUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13;
-
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn11 = findViewById(R.id.btn11);
         btn12 = findViewById(R.id.btn12);
         btn13 = findViewById(R.id.btn13);
+        btn14 = findViewById(R.id.btn14);
+        btn15 = findViewById(R.id.btn15);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn11.setOnClickListener(this);
         btn12.setOnClickListener(this);
         btn13.setOnClickListener(this);
+        btn14.setOnClickListener(this);
+        btn15.setOnClickListener(this);
 
     }
 
@@ -97,8 +100,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn13: intent = new Intent(MainActivity.this,AsyncTaskActivity.class);
                              startActivity(intent);
                              break;
-
-             default: break;
+            case R.id.btn14: intent = new Intent(MainActivity.this,PlayGifActivity.class);
+                             startActivity(intent);
+                             break;
+            case R.id.btn15: intent = new Intent(MainActivity.this,LiveDataActivity.class);
+                startActivity(intent);
+                break;
+            default: break;
         }
     }
 }
