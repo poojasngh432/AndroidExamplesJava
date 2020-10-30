@@ -27,10 +27,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.AddEditNoteActivity"
-            android:parentActivityName=".activity.LiveDataActivity"></activity>
-        <activity android:name=".activity.LiveDataActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".activity.OrientationActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+        </activity>
+        <activity
+            android:name=".activity.AddEditNoteActivity"
+            android:parentActivityName=".activity.LiveDataActivity" />
+        <activity
+            android:name=".activity.LiveDataActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".activity.PlayGifActivity" />
         <activity android:name=".activity.AsyncTaskActivity" />
         <activity android:name=".activity.LVandRVActivity" />

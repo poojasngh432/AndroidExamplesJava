@@ -79,8 +79,10 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
 
     protected boolean isFirstTimeAskForPhotoTaggingPermission(){
         SharedPreferences sharedPreferences = getSharedPreferences("permissionasks", MODE_PRIVATE);
+        //to read
         boolean isFirstTime = sharedPreferences.getBoolean("PHOTO_FIRST_PERMISSION",true);
         if(isFirstTime){
+            //to write
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("PHOTO_FIRST_PERMISSION",false);
             editor.commit();

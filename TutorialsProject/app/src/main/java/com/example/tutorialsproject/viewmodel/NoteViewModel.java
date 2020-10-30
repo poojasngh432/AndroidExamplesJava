@@ -1,15 +1,11 @@
 package com.example.tutorialsproject.viewmodel;
 
 import android.app.Application;
-import android.app.ListActivity;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-
 import com.example.tutorialsproject.database.Note;
 import com.example.tutorialsproject.database.NoteRepository;
-
 import java.util.List;
 
 public class NoteViewModel extends AndroidViewModel {

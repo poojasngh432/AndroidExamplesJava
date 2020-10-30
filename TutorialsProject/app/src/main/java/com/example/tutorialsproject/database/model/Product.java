@@ -17,7 +17,6 @@ public class Product {
     private BigDecimal rating;
     private int serial_number;
 
-
     public Product(String title, String description, int image, BigDecimal price, BigDecimal sale_price, int num_ratings, BigDecimal rating, int serial_number) {
         this.title = title;
         this.description = description;

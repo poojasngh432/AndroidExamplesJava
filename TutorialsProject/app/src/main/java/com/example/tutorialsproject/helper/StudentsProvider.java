@@ -97,7 +97,7 @@ public class StudentsProvider extends ContentProvider {
         /**
          * Add a new student record
          */
-        long rowID = db.insert(	STUDENTS_TABLE_NAME, "", values);
+        long rowID = db.insert(STUDENTS_TABLE_NAME, "", values);
 
         /**
          * If record is added successfully
