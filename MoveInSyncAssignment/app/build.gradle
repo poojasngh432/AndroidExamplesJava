@@ -26,6 +26,7 @@ android {
 
 ext {
     glide_version = "4.6.1"
+    stetho_version = "1.5.0"
 }
 
 dependencies {
@@ -53,4 +54,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+
+    debugImplementation "com.facebook.stetho:stetho:$stetho_version"
 }

@@ -15,6 +15,9 @@ public class Product {
     @SerializedName("price")
     private int price;
 
+    public Product() {
+    }
+
     public Product(String name, String description, String urlString, int price) {
         this.name = name;
         this.description = description;
