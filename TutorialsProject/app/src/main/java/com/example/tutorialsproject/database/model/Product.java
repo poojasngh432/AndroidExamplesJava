@@ -2,9 +2,10 @@ package com.example.tutorialsproject.database.model;
 
 import android.os.Parcel;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Product {
+public class Product implements Serializable {
 
     private static final String TAG = "Product";
 

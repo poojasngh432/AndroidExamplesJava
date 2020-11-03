@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent i4 = new Intent(this, Example4Activity.class);
             startActivity(i4);
         }else if(view.getId() == R.id.ex_5){
-
+            Intent i5 = new Intent(this, Example5Activity.class);
+            startActivity(i5);
         }else if(view.getId() == R.id.ex_6){
 
         }

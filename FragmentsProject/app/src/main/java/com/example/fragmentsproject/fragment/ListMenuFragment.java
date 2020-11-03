@@ -19,7 +19,7 @@ public class ListMenuFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_list_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_menu, container, false);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, countries);
         setListAdapter(adapter);
         return view;
@@ -30,4 +30,5 @@ public class ListMenuFragment extends ListFragment {
         txt.change("Country: "+ countries[position],"Capital : "+ capital[position]);
         getListView().setSelector(android.R.color.holo_blue_dark);
     }
+
 }

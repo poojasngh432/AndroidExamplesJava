@@ -10,12 +10,19 @@ import android.widget.TextView;
 
 import com.example.tutorialsproject.Interface.PhoneInterface;
 import com.example.tutorialsproject.R;
+import com.example.tutorialsproject.database.model.Product;
 import com.example.tutorialsproject.util.AsyncTaskUtil;
+import com.example.tutorialsproject.util.Products;
 import com.example.tutorialsproject.util.SingletonClass;
 import com.example.tutorialsproject.util.UiUtil;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17;
+    private Product[] product;
+    private Product productObj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn14 = findViewById(R.id.btn14);
         btn15 = findViewById(R.id.btn15);
         btn16 = findViewById(R.id.btn16);
+        btn17 = findViewById(R.id.btn17);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -55,7 +63,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn14.setOnClickListener(this);
         btn15.setOnClickListener(this);
         btn16.setOnClickListener(this);
+        btn17.setOnClickListener(this);
 
+        getData();
+    }
+
+    private void getData() {
+        Products p = new Products();
+        product = p.PRODUCTS;
+        productObj = product[0];
     }
 
     @Override
@@ -125,6 +141,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn16:
                 intent = new Intent(MainActivity.this, OrientationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn17:
+                intent = new Intent(MainActivity.this, SendingDataActivity.class);
+                //Sending an Object bundle
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("key_serializable",productObj);
+                intent.putExtras(bundle);
+
+                //Sending an ArrayList
+                ArrayList<String> objectArr = new ArrayList<String>();
+                objectArr.add("Thor");
+                objectArr.add("Doctor Strange");
+                objectArr.add("Loki");
+                objectArr.add("Iron Man");
+
+                bundle.putSerializable("ARRAYLIST", (Serializable)objectArr);
+                intent.putExtra("BUNDLE",bundle);
+
                 startActivity(intent);
                 break;
             default:

@@ -96,20 +96,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void showToast(String str) {
-        Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show();
-    }
-
-    private void setProductsCategoryList() {
-        productCategoryList.add(new ProductCategory(1, "Trending"));
-        productCategoryList.add(new ProductCategory(2, "Most Popular"));
-        productCategoryList.add(new ProductCategory(3, "Handmade Products"));
-        productCategoryList.add(new ProductCategory(4, "Customizable"));
-        productCategoryList.add(new ProductCategory(5, "Wood"));
-        productCategoryList.add(new ProductCategory(6, "Art"));
-        productCategoryList.add(new ProductCategory(7, "Home decor"));
-    }
-
     private void callApi() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -127,6 +113,36 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         callEndPoints();
+    }
+
+    private void callEndPoints() {
+
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        Observable<List<Product>> observable = apiInterface.getProducts();
+        observable.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<List<Product>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(List<Product> productsList) {
+                allProductsData.addAll(productsList);
+                AllProductsDao allProductsDao = new AllProductsDao(getApplicationContext());
+                allProductsDao.insertProductsLocal(allProductsData);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                showToast(e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                setRecyclerView();
+            }
+        });
     }
 
     private void setRecyclerView() {
@@ -170,44 +186,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-
-    private void callEndPoints() {
-
-        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-
-        Observable<List<Product>> observable = apiInterface.getProducts();
-        observable.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<List<Product>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(List<Product> productsList) {
-                allProductsData.addAll(productsList);
-                AllProductsDao allProductsDao = new AllProductsDao(getApplicationContext());
-                allProductsDao.insertProductsLocal(allProductsData);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                showToast(e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-                setRecyclerView();
-            }
-        });
-    }
-
     private void setProductRecycler(List<ProductCategory> productCategoryList){
 
         productCatRecycler = findViewById(R.id.cat_recycler);
@@ -215,6 +193,27 @@ public class MainActivity extends AppCompatActivity {
         productCatRecycler.setLayoutManager(layoutManager);
         productCategoryAdapter = new ProductCategoryAdapter(this, productCategoryList);
         productCatRecycler.setAdapter(productCategoryAdapter);
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void setProductsCategoryList() {
+        productCategoryList.add(new ProductCategory(1, "Trending"));
+        productCategoryList.add(new ProductCategory(2, "Most Popular"));
+        productCategoryList.add(new ProductCategory(3, "Handmade Products"));
+        productCategoryList.add(new ProductCategory(4, "Customizable"));
+        productCategoryList.add(new ProductCategory(5, "Wood"));
+        productCategoryList.add(new ProductCategory(6, "Art"));
+        productCategoryList.add(new ProductCategory(7, "Home decor"));
+    }
+
+    private void showToast(String str) {
+        Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show();
     }
 
 }

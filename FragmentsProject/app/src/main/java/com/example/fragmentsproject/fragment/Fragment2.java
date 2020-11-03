@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.example.fragmentsproject.R;
 
 public class Fragment2 extends Fragment {
+    TextView textView;
+    String str;
 
     public Fragment2() {
         // Required empty public constructor
@@ -26,6 +28,17 @@ public class Fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_two, container, false);
+        textView = view.findViewById(R.id.textview);
+
+        return view;
     }
+
+    public void change(){
+        str = textView.getText().toString();
+        int val = Integer.valueOf(str);
+        val++;
+        textView.setText(String.valueOf(val));
+    }
+
 }

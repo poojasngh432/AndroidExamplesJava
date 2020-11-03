@@ -238,8 +238,8 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/add_something44"
-                android:text="Add more.."
+                android:id="@+id/btn17"
+                android:text="Sending Data"
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:padding="@dimen/dp_10"
