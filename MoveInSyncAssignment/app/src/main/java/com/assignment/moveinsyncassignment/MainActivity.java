@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
     private void setProductRecycler(List<ProductCategory> productCategoryList){
 
         productCatRecycler = findViewById(R.id.cat_recycler);
-        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         productCatRecycler.setLayoutManager(layoutManager);
         productCategoryAdapter = new ProductCategoryAdapter(this, productCategoryList);
         productCatRecycler.setAdapter(productCategoryAdapter);
