@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
     private List<String> photosList;
     private MainAdapter mainAdapter;
     LinearLayoutManager linearLayoutManager;
-    GridLayoutManager gridLayoutManager;
+    GridLayoutManager gridLayoutManager2;
+    GridLayoutManager gridLayoutManager3;
     RecyclerView.LayoutManager layoutManager;
     private static final String TAG = "MainActivity";
     private static final String FIRST_PAGE = "1";
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isScrolling = false;
     private int lazyLoadPageNumber = 1;
     private int totalPages = 0;
+    private int layout = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_load_more);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        gridLayoutManager = new GridLayoutManager(this, 2);
+        gridLayoutManager2 = new GridLayoutManager(this, 2);
+        gridLayoutManager3 = new GridLayoutManager(this, 3);
 
         changeLayoutManager();
         setRecyclerView();
@@ -123,9 +126,15 @@ public class MainActivity extends AppCompatActivity {
                     totalItems = linearLayoutManager.getItemCount();
                     scrolledOutItems = linearLayoutManager.findFirstVisibleItemPosition();
                 }else{
-                    currentItems = gridLayoutManager.getChildCount();
-                    totalItems = gridLayoutManager.getItemCount();
-                    scrolledOutItems = gridLayoutManager.findFirstVisibleItemPosition();
+                    if(layout == 2){
+                        currentItems = gridLayoutManager2.getChildCount();
+                        totalItems = gridLayoutManager2.getItemCount();
+                        scrolledOutItems = gridLayoutManager2.findFirstVisibleItemPosition();
+                    }else if(layout == 3){
+                        currentItems = gridLayoutManager3.getChildCount();
+                        totalItems = gridLayoutManager3.getItemCount();
+                        scrolledOutItems = gridLayoutManager3.findFirstVisibleItemPosition();
+                    }
                 }
 
                 Log.d(TAG, "onScrolled: scrolledOutItems: " + scrolledOutItems);
@@ -163,10 +172,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeLayoutManager() {
-        if(layoutManager == linearLayoutManager){
-            layoutManager = gridLayoutManager;
-        }else{
+        if(layout == 1){
+            layout = 2;
             layoutManager = linearLayoutManager;
+        }else if(layout == 2){
+            layout = 3;
+            layoutManager = gridLayoutManager2;
+        }else if(layout == 3){
+            layout = 1;
+            layoutManager = gridLayoutManager3;
         }
     }
 
