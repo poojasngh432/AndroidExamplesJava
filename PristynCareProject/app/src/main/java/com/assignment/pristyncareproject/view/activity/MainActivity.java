@@ -2,6 +2,10 @@ package com.assignment.pristyncareproject.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +33,7 @@ import com.assignment.pristyncareproject.data.api.RetrofitService;
 import com.assignment.pristyncareproject.data.model.Photo;
 import com.assignment.pristyncareproject.data.model.Photos;
 import com.assignment.pristyncareproject.view.adapter.MainAdapter;
+import com.assignment.pristyncareproject.viewmodel.PhotoViewModel;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,7 +42,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -54,9 +58,9 @@ import static java.lang.String.valueOf;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    Retrofit retrofit;
     private Context mContext;
-    private List<Photo> photosData;
+    public static MutableLiveData<List<Photo>> photosLiveData;
+    public static List<Photo> photosData;
     private List<String> photosList;
     private MainAdapter mainAdapter;
     LinearLayoutManager linearLayoutManager;
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     private int lazyLoadPageNumber = 1;
     private int totalPages = 0;
     private int layout = 1;
+    private PhotoViewModel photoViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         mContext = MainActivity.this;
         photosList = new LinkedList<>();
         photosData = new LinkedList<>();
+        photosLiveData = new MutableLiveData<List<Photo>>();
         progressBar = findViewById(R.id.progress_load_more);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
@@ -87,6 +93,19 @@ public class MainActivity extends AppCompatActivity {
 
         changeLayoutManager();
         setRecyclerView();
+
+        photoViewModel = ViewModelProviders.of(this).get(PhotoViewModel.class);
+        photoViewModel.getAllPhotos().observe(this, new Observer<List<Photo>>() {
+            @Override
+            public void onChanged(List<Photo> photos) {
+                mainAdapter.notifyDataSetChanged();
+                runOnUiThread(() -> {
+                    swipeRefreshLayout.setRefreshing(false);
+                    progressBar.setVisibility(View.GONE);
+                    setRecyclerView();
+                });
+            }
+        });
 
         if(isNetworkAvailable(this)){
             getPhotosData();
@@ -126,11 +145,11 @@ public class MainActivity extends AppCompatActivity {
                     totalItems = linearLayoutManager.getItemCount();
                     scrolledOutItems = linearLayoutManager.findFirstVisibleItemPosition();
                 }else{
-                    if(layout == 2){
+                    if(layoutManager == gridLayoutManager2){
                         currentItems = gridLayoutManager2.getChildCount();
                         totalItems = gridLayoutManager2.getItemCount();
                         scrolledOutItems = gridLayoutManager2.findFirstVisibleItemPosition();
-                    }else if(layout == 3){
+                    }else if(layoutManager == gridLayoutManager3){
                         currentItems = gridLayoutManager3.getChildCount();
                         totalItems = gridLayoutManager3.getItemCount();
                         scrolledOutItems = gridLayoutManager3.findFirstVisibleItemPosition();
@@ -229,20 +248,16 @@ public class MainActivity extends AppCompatActivity {
                             photosData.clear();
                         }
                         List<Photo> data = response.body().getPhotos().getPhoto();
-                        photosData.addAll(data);
+                        photoViewModel.addPhotos(data);
+
                         photosList.clear();
-                        for(Photo photo: photosData){
+                        for(Photo photo: photoViewModel.getAllPhotos().getValue()){
                             //https://live.staticflickr.com/{server-id}/{id}_{secret}.jpg
                             String url = "https://live.staticflickr.com/" + photo.getServer() + "/" + photo.getId() + "_" + photo.getSecret() + ".jpg";
                             photosList.add(url);
                         }
                         totalPages = response.body().getPhotos().getPages();
-                        mainAdapter.notifyDataSetChanged();
-                        runOnUiThread(() -> {
-                            swipeRefreshLayout.setRefreshing(false);
-                            progressBar.setVisibility(View.GONE);
-                            setRecyclerView();
-                        });
+
                     } else {
                         runOnUiThread(() -> {
                             photosList.clear();
