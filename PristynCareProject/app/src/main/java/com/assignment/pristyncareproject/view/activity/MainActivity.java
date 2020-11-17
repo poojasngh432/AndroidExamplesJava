@@ -153,10 +153,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 if (isNetworkAvailable(mContext)) {
                     Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
-                    intent.putExtra("name", photosData.get(position).getId());
-                    intent.putExtra("desc", photosData.get(position).getSecret());
-                    intent.putExtra("price", valueOf(photosData.get(position).getIspublic()));
-                    intent.putExtra("url", photosData.get(position).getServer());
+                    intent.putExtra("url", photosList.get(position));
                     startActivity(intent);
                 } else {
                     showToast("Not connected to Internet.");
