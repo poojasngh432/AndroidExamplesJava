@@ -28,4 +28,9 @@ public interface NoteDao {
 
     @Query("SELECT * FROM note_table ORDER BY priority DESC")
     LiveData<List<Note>> getAllNotes();
+
+    /**
+     * The @Query annotation on getAll()
+     * tells room that this function definition represents a query and takes a parameter in the form of a SQL statement.
+     */
 }

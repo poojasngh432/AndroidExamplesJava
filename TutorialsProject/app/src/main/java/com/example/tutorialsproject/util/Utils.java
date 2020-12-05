@@ -797,8 +797,7 @@ public class Utils {
     /**
      * Register a listener for getting updates of device charging, discharging or completely charged.
      */
-    public static void registerBatteryChangeBroadcastReceiver(Context context,
-                                                              final BatteryChargeListener batteryChargeListener) {
+    public static void registerBatteryChangeBroadcastReceiver(Context context, final BatteryChargeListener batteryChargeListener) {
         final IntentFilter theFilter = new IntentFilter();
         /* System Defined Broadcast */
         theFilter.addAction(Intent.ACTION_BATTERY_CHANGED);

@@ -59,7 +59,6 @@
                     android:scaleY="1.2"
                     android:numStars="5"
                     android:rating="@{product.rating.floatValue()}"
-                    android:id="@+id/rating"
                     android:isIndicator="true"
                     android:layout_toLeftOf="@+id/num_ratings"
                     android:layout_marginRight="10dp"
@@ -70,7 +69,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/title"
                 android:textColor="@color/Black"
                 android:text="@{product.title}"
                 android:textSize="14sp"
@@ -108,7 +106,7 @@
                     android:textSize="16sp"
                     android:textColor="@color/red2"
                     android:text="@{product.hasSalePrice() ? BigDecimalUtil.getValue(product.sale_price) : BigDecimalUtil.getValue(product.price)}"
-                    android:id="@+id/price"/>
+                  />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -137,14 +135,12 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/Black"
-                    android:text="@{StringUtil.getQuantityString(quantity)}"
-                    android:id="@+id/quantity"/>
+                    android:text="@{StringUtil.getQuantityString(quantity)}"/>
 
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:src="@drawable/ic_up_down_arrows"
-                    android:layout_toRightOf="@id/quantity"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"/>
 

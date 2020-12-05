@@ -1,0 +1,32 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="productVar"
+            type="com.example.tutorialsproject.database.model.Product" />
+    </data>
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_product"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/dp_15"
+            android:text='@{productVar.title + ": " + productVar.description}'
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_fb"
+            android:layout_gravity="center"
+            app:isVisible="@{productVar.rating}"/>
+
+    </LinearLayout>
+</layout>

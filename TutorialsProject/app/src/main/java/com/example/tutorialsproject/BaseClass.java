@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.tutorialsproject.Interface.ApiInterface;
 import com.example.tutorialsproject.database.DatabaseHelper;
+import com.example.tutorialsproject.database.MainDatabase;
 import com.example.tutorialsproject.database.model.gifModel.GifModel;
 import com.example.tutorialsproject.util.UiUtil;
 import com.facebook.stetho.Stetho;
@@ -25,6 +26,7 @@ public class BaseClass extends Application {
     private ApiInterface api;
     private DatabaseHelper dbHelper;
     private String url;
+    private MainDatabase mainDatabase;
 
     public static BaseClass getInstance(){
         return instance;
@@ -107,10 +109,15 @@ public class BaseClass extends Application {
 
     private void initiateDB() {
         dbHelper = new DatabaseHelper(this);
+        mainDatabase = MainDatabase.getInstance(getApplicationContext());
     }
 
     public DatabaseHelper getDbHelper() {
         return dbHelper;
+    }
+
+    public MainDatabase getMainDatabase(){
+        return mainDatabase;
     }
 
     public void setDbHelper(DatabaseHelper dbHelper) {

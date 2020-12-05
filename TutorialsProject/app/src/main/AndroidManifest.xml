@@ -27,11 +27,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.SendingDataActivity"></activity>
+        <activity android:name=".activity.ViewModelActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.RXJavaActivity" />
+        <activity android:name=".activity.TwoWayDataBindingActivity">
+
+        </activity>
+        <activity android:name=".activity.OneWayDataBindingActivity" />
+        <activity android:name=".activity.DaggerActivity" />
+        <activity android:name=".activity.RoomDBActivity" />
+        <activity android:name=".activity.RotationAsyncActivity" />
+        <activity android:name=".activity.SendingDataActivity" />
         <activity
             android:name=".activity.OrientationActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".activity.AddEditNoteActivity"
             android:parentActivityName=".activity.LiveDataActivity" />
@@ -55,13 +70,7 @@
         <activity android:name=".activity.ContentProviderActivity" />
         <activity android:name=".activity.SingletonActivity" />
         <activity android:name=".activity.UserProfile" />
-        <activity android:name=".activity.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.SplashActivity" />
         <activity android:name=".activity.SignupActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.DIActivity" />

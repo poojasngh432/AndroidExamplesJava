@@ -22,8 +22,7 @@ public class Products {
     }
 
     public static final Product RED_LAMP = new Product("Red Lamp", "Red colored lamp, perfect for lighting up a room " +
-            "and matching any red furniture.", R.drawable.red_lamp, new BigDecimal(10.99), new BigDecimal(9.50), 161,
-            new BigDecimal(4.5), 1515611);
+            "and matching any red furniture.", R.drawable.red_lamp, new BigDecimal(10.99), new BigDecimal(9.50), 161, new BigDecimal(4.5), 1515611);
 
     public static final Product YELLOW_LAMP = new Product("Yellow Lamp", "Yellow colored lamp, perfect for lighting up a room " +
             "and matching any Yellow furniture.", R.drawable.yellow_lamp, new BigDecimal(11.99), new BigDecimal(0), 6,
