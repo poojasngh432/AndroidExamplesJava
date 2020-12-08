@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class AsyncTaskActivity extends AppCompatActivity {
 
-    public static final String TAG = "AT";
+    public static final String TAG = "AsyncTaskActivity";
     TextView tvCounter;
     Button btnStart, btnRandom;
 
@@ -27,6 +27,8 @@ public class AsyncTaskActivity extends AppCompatActivity {
         tvCounter = findViewById(R.id.tvCounter);
         btnStart = findViewById(R.id.btnStart);
         btnRandom = findViewById(R.id.btnRandom);
+
+        Log.d(TAG,"onCreate");
 
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
+            Log.d(TAG,"value : " + values[0]);
             tvCounter.setText(String.valueOf(values[0]));
         }
     }
@@ -70,9 +73,47 @@ public class AsyncTaskActivity extends AppCompatActivity {
         long startTime = System.currentTimeMillis();
         while(System.currentTimeMillis() < startTime + 1000);
     }
+
     void waitNSec(int n){
         for(int i = 0; i < n; i++){
             wait1Sec();
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
+    }
+
 }

@@ -20,7 +20,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20, btn21, btn22, btn23, btn24, btn25, btn26, btn27, btn28, btn29, btn30, btn31, btn32, btn33, btn34, btn35;
+
     private Product[] product;
     private Product productObj;
 
@@ -46,6 +47,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn15 = findViewById(R.id.btn15);
         btn16 = findViewById(R.id.btn16);
         btn17 = findViewById(R.id.btn17);
+        btn18 = findViewById(R.id.btn18);
+        btn19 = findViewById(R.id.btn19);
+        btn20 = findViewById(R.id.btn20);
+        btn21 = findViewById(R.id.btn21);
+        btn22 = findViewById(R.id.btn22);
+        btn23 = findViewById(R.id.btn23);
+        btn24 = findViewById(R.id.btn24);
+        btn25 = findViewById(R.id.btn25);
+        btn26 = findViewById(R.id.btn26);
+        btn27 = findViewById(R.id.btn27);
+        btn28 = findViewById(R.id.btn28);
+        btn29 = findViewById(R.id.btn29);
+        btn30 = findViewById(R.id.btn30);
+        btn31 = findViewById(R.id.btn31);
+        btn32 = findViewById(R.id.btn32);
+        btn33 = findViewById(R.id.btn33);
+        btn34 = findViewById(R.id.btn34);
+        btn35 = findViewById(R.id.btn35);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -64,6 +83,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn15.setOnClickListener(this);
         btn16.setOnClickListener(this);
         btn17.setOnClickListener(this);
+        btn18.setOnClickListener(this);
+        btn19.setOnClickListener(this);
+        btn20.setOnClickListener(this);
+        btn21.setOnClickListener(this);
+        btn22.setOnClickListener(this);
+        btn23.setOnClickListener(this);
+        btn24.setOnClickListener(this);
+        btn25.setOnClickListener(this);
+        btn26.setOnClickListener(this);
+        btn27.setOnClickListener(this);
+        btn28.setOnClickListener(this);
+        btn29.setOnClickListener(this);
+        btn30.setOnClickListener(this);
+        btn31.setOnClickListener(this);
+        btn32.setOnClickListener(this);
+        btn33.setOnClickListener(this);
+        btn34.setOnClickListener(this);
+        btn35.setOnClickListener(this);
 
         getData();
     }
@@ -147,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(MainActivity.this, SendingDataActivity.class);
                 //Sending an Object bundle
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("key_serializable",productObj);
+                bundle.putSerializable("key_serializable", productObj);
                 intent.putExtras(bundle);
 
                 //Sending an ArrayList
@@ -157,9 +194,81 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 objectArr.add("Loki");
                 objectArr.add("Iron Man");
 
-                bundle.putSerializable("ARRAYLIST", (Serializable)objectArr);
-                intent.putExtra("BUNDLE",bundle);
+                bundle.putSerializable("ARRAYLIST", (Serializable) objectArr);
+                intent.putExtra("BUNDLE", bundle);
 
+                startActivity(intent);
+                break;
+            case R.id.btn18:
+                intent = new Intent(MainActivity.this, DaggerActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn19:
+                intent = new Intent(MainActivity.this, LVandRVActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn20:
+                intent = new Intent(MainActivity.this, OneWayDataBindingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn21:
+                intent = new Intent(MainActivity.this, RoomDBActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn22:
+                intent = new Intent(MainActivity.this, RotationAsyncActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn23:
+                intent = new Intent(MainActivity.this, RXJavaActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn24:
+                intent = new Intent(MainActivity.this, ServiceActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn25:
+                intent = new Intent(MainActivity.this, TwoWayDataBindingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn26:
+                intent = new Intent(MainActivity.this, ViewModelActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn27:
+                intent = new Intent(MainActivity.this, ButterKnifeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn28:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn29:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn30:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn31:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn32:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn33:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn34:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn35:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
                 break;
             default:

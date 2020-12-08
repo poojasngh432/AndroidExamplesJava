@@ -2,7 +2,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:layout_margin="5dp">
 
     <LinearLayout
         android:id="@+id/headerLayout"
@@ -10,6 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
+        android:padding="10dp"
         android:gravity="start">
 
         <TextView
@@ -19,20 +21,20 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_margin="5dp"
-            android:gravity="start"
-            android:padding="10dp"/>
+            android:gravity="start"/>
     </LinearLayout>
 
     <ListView
         android:id="@+id/commentsListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_below="@id/headerLayout"
         android:paddingBottom="50dp"
         android:layout_marginBottom="0dp"/>
 
     <LinearLayout
+        android:id="@+id/commentBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -47,11 +49,13 @@
         <EditText
             android:id="@+id/writeComment"
             android:hint="Write a Comment"
+            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="12dp"
             android:textColor="@color/black"
-            android:background="#00000000"/>
+            android:background="#00000000"
+            android:padding="10dp"/>
     </LinearLayout>
 
 </RelativeLayout>
