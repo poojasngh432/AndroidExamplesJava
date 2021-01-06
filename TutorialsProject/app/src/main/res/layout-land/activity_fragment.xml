@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root"
+    tools:context=".activity.FragmentActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/fragment_btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment Example 1"
+        android:padding="@dimen/dp_8"
+        android:onClick="onClickFragment1"
+        android:layout_margin="@dimen/dp_8"
+        android:background="@color/purple_dark4"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/fragment_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment Example 2"
+        android:padding="@dimen/dp_8"
+        android:onClick="onClickFragment2"
+        android:layout_margin="@dimen/dp_8"
+        android:background="@color/purple_dark4"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/fragment_btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment Example 3"
+        android:padding="@dimen/dp_8"
+        android:onClick="onClickFragment3"
+        android:layout_margin="@dimen/dp_8"
+        android:background="@color/purple_dark4"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/fragment_btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment Example 4"
+        android:padding="@dimen/dp_8"
+        android:onClick="onClickFragment4"
+        android:layout_margin="@dimen/dp_8"
+        android:background="@color/purple_dark4"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/fragment_btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment Example 5"
+        android:padding="@dimen/dp_8"
+        android:onClick="onClickFragment5"
+        android:layout_margin="@dimen/dp_8"
+        android:background="@color/purple_dark4"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

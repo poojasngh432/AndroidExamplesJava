@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.Fragment1">
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/nameET"
-        android:hint="Enter your name" />
+        android:text="This is Fragment1"
+        android:layout_gravity="center"
+        android:gravity="center"/>
 
 </FrameLayout>

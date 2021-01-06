@@ -29,4 +29,25 @@
         android:text="TextView"
         android:layout_marginBottom="@dimen/dp_15"/>
 
+    <Button
+        android:id="@+id/intent_filter_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:text="INTENT FILTER"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/send_broadcast_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:text="SEND BROADCAST"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"/>
+
+
 </LinearLayout>

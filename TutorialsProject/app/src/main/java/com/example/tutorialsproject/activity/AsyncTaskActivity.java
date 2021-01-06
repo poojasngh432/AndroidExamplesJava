@@ -42,7 +42,19 @@ public class AsyncTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CountTask countTask = new CountTask();
-                countTask.execute(10);
+                countTask.execute(10);  //uses SERIAL_EXECUTER to run task sequentially
+                //to run many asynctasks in parallel, use THREAD_POOL_EXECUTER
+                //for (Request req : allPendingRequest) {
+                //new BatchTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, req);
+                //}
+
+                /**
+                 * This AsyncTask.THREAD_POOL_EXECUTOR will queue up all the task and execute it 5 tasks at a time
+                 * and when any of running task is completed, the next one from the queue is executed.
+                 * This is repeated until the queue becomes empty. A
+                 * syncTask.THREAD_POOL_EXECUTOR cannot queue more than 128 tasks at a time.
+                 * So if we submit more than that, an exception will be thrown.
+                 */
             }
         });
     }

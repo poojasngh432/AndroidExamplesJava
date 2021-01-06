@@ -1,20 +1,18 @@
 package com.example.tutorialsproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.tutorialsproject.Interface.PhoneInterface;
 import com.example.tutorialsproject.R;
+import com.example.tutorialsproject.database.StaticClass;
+import com.example.tutorialsproject.database.model.Person;
 import com.example.tutorialsproject.database.model.Product;
-import com.example.tutorialsproject.util.AsyncTaskUtil;
 import com.example.tutorialsproject.util.Products;
-import com.example.tutorialsproject.util.SingletonClass;
-import com.example.tutorialsproject.util.UiUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -161,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn12:
-                intent = new Intent(MainActivity.this, LVandRVActivity.class);
+                intent = new Intent(MainActivity.this, ListViewActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn13:
@@ -204,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn19:
-                intent = new Intent(MainActivity.this, LVandRVActivity.class);
+                intent = new Intent(MainActivity.this, ListViewActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn20:
@@ -240,31 +238,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn28:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, GraphqlActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn29:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn30:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, FragmentActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn31:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, HandlerActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn32:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, LooperActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn33:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, MultipleAsyncTaskActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn34:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, ObservableActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn35:

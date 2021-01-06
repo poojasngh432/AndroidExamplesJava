@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".BaseClass"
@@ -27,10 +28,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.ButterKnifeActivity"></activity>
-        <activity android:name=".activity.ViewModelActivity"></activity>
+        <activity android:name=".activity.ObservableActivity"></activity>
+        <activity android:name=".activity.FragmentEx2Activity" />
+        <activity android:name=".activity.FragmentEx1Activity" />
+        <activity android:name=".activity.MotionLayoutActivity" />
+        <activity android:name=".activity.MultipleAsyncTaskActivity" />
+        <activity android:name=".activity.ThreadActivity" />
+        <activity android:name=".activity.DataStructuresActivity" />
+        <activity android:name=".activity.LooperActivity" />
+        <activity android:name=".activity.HandlerActivity" />
+
+        <service android:name=".BackgroundService" />
+        <service android:name=".ForegroundService" />
+
+        <activity android:name=".activity.IntentFilterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.FragmentActivity" />
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".activity.GraphqlActivity" />
+        <activity android:name=".activity.ButterKnifeActivity" />
+        <activity android:name=".activity.ViewModelActivity" />
         <activity android:name=".activity.RXJavaActivity" />
-        <activity android:name=".activity.TwoWayDataBindingActivity"></activity>
+        <activity android:name=".activity.TwoWayDataBindingActivity" />
         <activity android:name=".activity.OneWayDataBindingActivity" />
         <activity android:name=".activity.DaggerActivity" />
         <activity android:name=".activity.RoomDBActivity" />
@@ -48,7 +75,7 @@
             android:launchMode="singleTop" />
         <activity android:name=".activity.PlayGifActivity" />
         <activity android:name=".activity.AsyncTaskActivity" />
-        <activity android:name=".activity.LVandRVActivity" />
+        <activity android:name=".activity.ListViewActivity" />
         <activity android:name=".activity.NetworkingActivity" />
 
         <service
@@ -90,6 +117,11 @@
         <receiver android:name=".MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".DynamicBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.example.tutorialsproject.activity.CUSTOM_INTENT" />
             </intent-filter>
         </receiver>
 

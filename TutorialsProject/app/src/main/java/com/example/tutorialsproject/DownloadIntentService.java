@@ -61,6 +61,4 @@ public class DownloadIntentService extends IntentService {
         mgr.enqueue(request);
     }
 
-
-
 }

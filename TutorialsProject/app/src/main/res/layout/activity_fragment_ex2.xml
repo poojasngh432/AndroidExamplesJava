@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.FragmentEx2Activity">
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="ADD FRAGMENT"
+        android:id="@+id/add_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/replace_btn"
+        android:background="@color/purple_dark4"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp_8"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="REPLACE"
+        android:id="@+id/replace_btn"
+        app:layout_constraintLeft_toRightOf="@+id/add_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/purple_dark4"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp_8"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:id="@+id/fragment_container"
+        android:layout_marginTop="@dimen/dp_15"
+        app:layout_constraintTop_toBottomOf="@+id/add_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

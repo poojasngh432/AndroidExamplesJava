@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.tutorialsproject.R;
 
-public class LVandRVActivity extends AppCompatActivity {
+public class MotionLayoutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lvand_rv);
+        setContentView(R.layout.activity_motion_layout);
     }
 }

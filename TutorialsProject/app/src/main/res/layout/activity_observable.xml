@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.tutorialsproject.database.model.User" />
+
+        <variable
+            name="clickHandler"
+            type="com.example.tutorialsproject.activity.ObservableActivity.ClickHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.ObservableActivity">
+
+        <TextView
+            android:id="@+id/firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:text="First Name: "
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/firstname_TV"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/firstname_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:text="@{user.firstName}"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/firstname"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Pooja" />
+
+        <TextView
+            android:id="@+id/lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Last Name: "
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/lastname_TV"
+            app:layout_constraintTop_toBottomOf="@+id/firstname"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/lastname_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@{user.lastName}"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/lastname"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstname_TV"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Singh" />
+
+        <TextView
+            android:id="@+id/enterfirstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:text="Enter First Name: "
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/enterlastname"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/firstname_ET"
+            app:layout_constraintTop_toBottomOf="@+id/lastname"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstname_ET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:hint="First Name"
+            android:padding="@dimen/dp_8"
+            app:layout_constraintBaseline_toBaselineOf="@id/enterfirstname"
+            app:layout_constraintBottom_toTopOf="@+id/lastname_ET"
+            app:layout_constraintLeft_toRightOf="@+id/enterfirstname"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/enterlastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:text="Enter Last Name: "
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/lastname_ET"
+            app:layout_constraintTop_toBottomOf="@+id/enterfirstname" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastname_ET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:hint="Last Name"
+            android:padding="@dimen/dp_8"
+            app:layout_constraintBaseline_toBaselineOf="@id/enterlastname"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/enterlastname"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstname_ET" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPDATE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastname_ET"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="@{clickHandler::updateUser}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

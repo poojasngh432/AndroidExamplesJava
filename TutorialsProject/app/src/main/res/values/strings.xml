@@ -67,5 +67,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_more">Add more..</string>
+    <string name="text_first_fragment_title">First Fragment</string>
+    <string name="button_first_text">First text</string>
 
 </resources>

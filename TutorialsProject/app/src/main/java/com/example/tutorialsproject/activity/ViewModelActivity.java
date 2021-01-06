@@ -2,10 +2,8 @@ package com.example.tutorialsproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
 import android.widget.TextView;
-
 import com.example.tutorialsproject.R;
 import com.example.tutorialsproject.viewmodel.PracticeViewModel;
 
@@ -25,5 +23,6 @@ public class ViewModelActivity extends AppCompatActivity {
         PracticeViewModel viewModel = ViewModelProviders.of(this).get(PracticeViewModel.class);
         int randomNum = viewModel.generateRandomNum();
         numTV.setText(String.valueOf(randomNum));
+        
     }
 }

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.apollographql.android'
 
 android {
     compileSdkVersion 29
@@ -20,6 +21,11 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -79,6 +85,9 @@ dependencies {
 
     //Butterknife
     implementation 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //Graphql
+    implementation("com.apollographql.apollo:apollo-runtime:0.4.4")
 
 }

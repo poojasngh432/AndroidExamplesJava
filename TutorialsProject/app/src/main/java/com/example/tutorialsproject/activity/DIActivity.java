@@ -14,7 +14,7 @@ public class DIActivity extends AppCompatActivity {
     //For Dependency Injection
     @Inject Car car;  //(This car variable to be injected with Car object)
                               // so instead of car = component.getCar();
-                              //Dagger does npt support injection into private fields
+                              //Dagger does not support injection into private fields
                               //so private will be removed
 
     @Override
