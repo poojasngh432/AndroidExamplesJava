@@ -24,6 +24,7 @@ import java.util.List;
 
 public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
+    public static final String ANDROIDID = "751553f36becc655";
     protected int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 20;
     protected int MY_PERMISSION_REQUEST_WRITE_CONTACTS = 30;
     protected int MY_PHOTO_TAGGING_PERMISSIONS = 40;

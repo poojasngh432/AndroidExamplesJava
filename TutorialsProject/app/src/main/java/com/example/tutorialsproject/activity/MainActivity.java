@@ -266,7 +266,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn35:
-                intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent = new Intent(MainActivity.this, NetworkCallsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn36:
+                intent = new Intent(MainActivity.this, NetworkCallKotlinActivity.class);
                 startActivity(intent);
                 break;
             default:

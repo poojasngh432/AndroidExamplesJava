@@ -11,7 +11,6 @@ import com.example.tutorialsproject.Interface.ApiInterface;
 import com.example.tutorialsproject.database.DatabaseHelper;
 import com.example.tutorialsproject.database.MainDatabase;
 import com.example.tutorialsproject.database.model.gifModel.GifModel;
-import com.example.tutorialsproject.util.UiUtil;
 import com.facebook.stetho.Stetho;
 
 import retrofit2.Call;
@@ -23,10 +22,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class BaseClass extends Application {
     private static BaseClass instance;
     private Retrofit retrofit;
-    private ApiInterface api;
+    private ApiInterface retrofitClient;
     private DatabaseHelper dbHelper;
     private String url;
     private MainDatabase mainDatabase;
+    //private static ApiInterface mService;
 
     public static BaseClass getInstance(){
         return instance;
@@ -43,14 +43,8 @@ public class BaseClass extends Application {
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                         .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                         .build());
-        retrofit = new Retrofit.Builder()
-                .baseUrl(ApiInterface.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        api = retrofit.create(ApiInterface.class);
 
         initiateDB();
-
         callApi();
 
     }
@@ -68,9 +62,9 @@ public class BaseClass extends Application {
                     .baseUrl(ApiInterface.BASE_GIF_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            api = retrofit.create(ApiInterface.class);
+            retrofitClient = retrofit.create(ApiInterface.class);
 
-            Call<GifModel> call = api.getGifResult();
+            Call<GifModel> call = retrofitClient.getGifResult();
 
             call.enqueue(new Callback<GifModel>() {
                 @Override
@@ -99,13 +93,39 @@ public class BaseClass extends Application {
         super.attachBaseContext(base);
     }
 
-    public ApiInterface getApiClient(){
-        return api;
+    public ApiInterface getRetrofitClient(){
+        if(retrofitClient == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(ApiInterface.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            retrofitClient = retrofit.create(ApiInterface.class);
+        }
+        return retrofitClient;
+    }
+
+    public ApiInterface getOkhttpClient(){
+        //Creating a retrofit object
+        if(retrofitClient == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(ApiInterface.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            retrofitClient = retrofit.create(ApiInterface.class);
+        }
+        return retrofitClient;
     }
 
     public String getUrl(){
         return url;
     }
+
+//    public static ApiInterface getService() {
+//        if (mService == null) {
+//            mService = RetrofitClientInstance.createService(ApiInterface.class, BuildConfig.REST_HOST);
+//        }
+//        return mService;
+//    }
 
     private void initiateDB() {
         dbHelper = new DatabaseHelper(this);

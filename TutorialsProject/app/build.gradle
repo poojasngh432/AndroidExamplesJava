@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.apollographql.android'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
@@ -17,6 +18,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "REST_HOST", "\"https://thekrishi.com/v2/\""
         }
     }
     dataBinding {
@@ -37,6 +39,7 @@ ext {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     def lifecycle_version = "1.1.1"
     def room_version = "2.2.5"
 
@@ -53,6 +56,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
+
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
     // image loader
     implementation "com.github.bumptech.glide:glide:$glide_version"
@@ -89,5 +96,7 @@ dependencies {
 
     //Graphql
     implementation("com.apollographql.apollo:apollo-runtime:0.4.4")
+
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
 }

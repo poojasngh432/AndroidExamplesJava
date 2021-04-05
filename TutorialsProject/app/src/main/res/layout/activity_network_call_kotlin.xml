@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.NetworkCallKotlinActivity">
+
+    <Button
+        android:id="@+id/retrofitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/dp_8"
+        android:text="Retrofit"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corner_blue"/>
+
+    <Button
+        android:id="@+id/okhttpBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/retrofitBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/dp_8"
+        android:text="Okhttp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corner_blue"/>
+
+    <Button
+        android:id="@+id/rxjavaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/okhttpBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/dp_8"
+        android:text="rxjava"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corner_blue"/>
+
+    <Button
+        android:id="@+id/volleyBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/rxjavaBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/dp_8"
+        android:text="Volley"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corner_blue"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

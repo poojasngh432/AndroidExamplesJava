@@ -28,7 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.ObservableActivity"></activity>
+        <activity android:name=".activity.NetworkCallKotlinActivity"></activity>
+        <activity android:name=".activity.NetworkCallsActivity" />
+        <activity android:name=".activity.ObservableActivity" />
         <activity android:name=".activity.FragmentEx2Activity" />
         <activity android:name=".activity.FragmentEx1Activity" />
         <activity android:name=".activity.MotionLayoutActivity" />
