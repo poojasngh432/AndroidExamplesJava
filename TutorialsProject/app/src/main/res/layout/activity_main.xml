@@ -519,7 +519,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn38"
-                android:text="Edit this.."
+                android:text="MVP Diagnostics"
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:padding="@dimen/dp_10"

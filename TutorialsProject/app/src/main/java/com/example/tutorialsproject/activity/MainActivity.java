@@ -13,6 +13,7 @@ import com.example.tutorialsproject.database.StaticClass;
 import com.example.tutorialsproject.database.model.Person;
 import com.example.tutorialsproject.database.model.Product;
 import com.example.tutorialsproject.mvp.MVPMainActivity;
+import com.example.tutorialsproject.mvp1mg.DiagnosticsHomeActivity;
 import com.example.tutorialsproject.util.Products;
 
 import java.io.Serializable;
@@ -293,7 +294,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn38:
-                intent = new Intent(MainActivity.this, NetworkCallKotlinActivity.class);
+                intent = new Intent(MainActivity.this, DiagnosticsHomeActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn39:
