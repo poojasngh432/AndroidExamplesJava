@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         image = findViewById(R.id.logo_image);
         logoText = findViewById(R.id.logo_name);
         sloganText = findViewById(R.id.slogan_name);
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.email);
         password = findViewById(R.id.password);
         login_btn = findViewById(R.id.login_btn);
 

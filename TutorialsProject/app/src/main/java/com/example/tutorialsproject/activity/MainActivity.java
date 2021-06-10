@@ -12,13 +12,14 @@ import com.example.tutorialsproject.R;
 import com.example.tutorialsproject.database.StaticClass;
 import com.example.tutorialsproject.database.model.Person;
 import com.example.tutorialsproject.database.model.Product;
+import com.example.tutorialsproject.mvp.MVPMainActivity;
 import com.example.tutorialsproject.util.Products;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20, btn21, btn22, btn23, btn24, btn25, btn26, btn27, btn28, btn29, btn30, btn31, btn32, btn33, btn34, btn35;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20, btn21, btn22, btn23, btn24, btn25, btn26, btn27, btn28, btn29, btn30, btn31, btn32, btn33, btn34, btn35, btn36, btn37, btn38, btn39, btn40, btn41, btn42;
 
     private Product[] product;
     private Product productObj;
@@ -63,6 +64,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn33 = findViewById(R.id.btn33);
         btn34 = findViewById(R.id.btn34);
         btn35 = findViewById(R.id.btn35);
+        btn36 = findViewById(R.id.btn36);
+        btn37 = findViewById(R.id.btn37);
+        btn38 = findViewById(R.id.btn38);
+        btn39 = findViewById(R.id.btn39);
+        btn40 = findViewById(R.id.btn40);
+        btn41 = findViewById(R.id.btn41);
+        btn42 = findViewById(R.id.btn42);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -99,6 +107,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn33.setOnClickListener(this);
         btn34.setOnClickListener(this);
         btn35.setOnClickListener(this);
+        btn36.setOnClickListener(this);
+        btn37.setOnClickListener(this);
+        btn38.setOnClickListener(this);
+        btn39.setOnClickListener(this);
+        btn40.setOnClickListener(this);
+        btn41.setOnClickListener(this);
+        btn42.setOnClickListener(this);
 
         getData();
     }
@@ -270,6 +285,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn36:
+                intent = new Intent(MainActivity.this, NetworkCallKotlinActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn37:
+                intent = new Intent(MainActivity.this, MVPMainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn38:
+                intent = new Intent(MainActivity.this, NetworkCallKotlinActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn39:
+                intent = new Intent(MainActivity.this, NetworkCallKotlinActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn40:
                 intent = new Intent(MainActivity.this, NetworkCallKotlinActivity.class);
                 startActivity(intent);
                 break;
