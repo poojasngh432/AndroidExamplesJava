@@ -117,9 +117,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn42.setOnClickListener(this);
 
         getData();
-
-        //this is second commit
-        hdaskjdkjasdjkasbdjk error
     }
 
     private void getData() {
