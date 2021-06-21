@@ -4,4 +4,8 @@ public interface DiagnosticsHomeView {
 
     void addTestToCart(int labId);
 
+    void showProgress();
+
+    void hideProgress();
+
 }

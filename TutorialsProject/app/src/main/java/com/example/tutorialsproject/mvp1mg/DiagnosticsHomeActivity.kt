@@ -1,13 +1,16 @@
 package com.example.tutorialsproject.mvp1mg
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tutorialsproject.R
 
 class DiagnosticsHomeActivity : AppCompatActivity(), Callback, DiagnosticsHomeView {
     lateinit var button : Button
+    lateinit var progress: ProgressBar
     lateinit var diagnosticsHomePresenter: DiagnosticsHomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,10 +18,11 @@ class DiagnosticsHomeActivity : AppCompatActivity(), Callback, DiagnosticsHomeVi
         setContentView(R.layout.activity_diagnostics_home)
 
         button = findViewById(R.id.button)
+        progress = findViewById(R.id.progress)
         diagnosticsHomePresenter = DiagnosticsHomePresenterImpl(this)
-
+        diagnosticsHomePresenter.onScreenCreated()
         button.setOnClickListener {
-            onAddToCartClick("Hi")
+            onAddToCartClick("button clicked")
         }
     }
 
@@ -38,6 +42,18 @@ class DiagnosticsHomeActivity : AppCompatActivity(), Callback, DiagnosticsHomeVi
 
     override fun addTestToCart(labId: Int) {
         Toast.makeText(this,"addTestToCart",Toast.LENGTH_LONG).show()
+    }
+
+    override fun showProgress() {
+        if (!progress.isShown()) {
+            progress.setVisibility(View.VISIBLE)
+        }
+    }
+
+    override fun hideProgress() {
+        if (progress.isShown()) {
+            progress.setVisibility(View.GONE)
+        }
     }
 }
 

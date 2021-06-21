@@ -69,5 +69,6 @@
     <string name="add_more">Add more..</string>
     <string name="text_first_fragment_title">First Fragment</string>
     <string name="button_first_text">First text</string>
+    <string name="no_network_message">No network</string>
 
 </resources>
