@@ -51,10 +51,10 @@ public class DiagnosticsHomePresenterImpl implements DiagnosticsHomePresenter {
         {
             if (cart.getDescription()!= null || cart.getName() != null)
             {
-                diagnosticCartInteractor.updateCartStore(cart);
+//                diagnosticCartInteractor.updateCartStore(cart);
             } else
             {
-                diagnosticCartInteractor.clearCartStore();
+//                diagnosticCartInteractor.clearCartStore();
             }
             fetchHomeData();
         }
