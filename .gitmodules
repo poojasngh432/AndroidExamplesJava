@@ -1,0 +1,3 @@
+[submodule "TutorialsProject/Tools_Demo_App"]
+	path = TutorialsProject/Tools_Demo_App
+	url = https://github.com/poojasngh432/Tools_Demo_App.git
